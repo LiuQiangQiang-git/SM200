@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SM200Bx64", "20200225_uc_SM200Bx64\SM200Bx64.csproj", "{60FC8946-2825-459D-B144-A6656416928F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SM200B", "20200225_uc_SM200Bx64\SM200B.csproj", "{60FC8946-2825-459D-B144-A6656416928F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UC_test", "UC_test\UC_test.csproj", "{883B766A-4A39-4640-98C1-D5229A59BB9C}"
 EndProject

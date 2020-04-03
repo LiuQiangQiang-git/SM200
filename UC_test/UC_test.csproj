@@ -101,9 +101,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\20200225_uc_SM200Bx64\SM200Bx64.csproj">
+    <ProjectReference Include="..\20200225_uc_SM200Bx64\SM200B.csproj">
       <Project>{60FC8946-2825-459D-B144-A6656416928F}</Project>
-      <Name>SM200Bx64</Name>
+      <Name>SM200B</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

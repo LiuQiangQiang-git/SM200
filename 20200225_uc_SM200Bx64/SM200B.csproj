@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\complex.cs" />
+    <Compile Include="Class\MineSM200API.cs" />
     <Compile Include="Class\MineSM200B.cs" />
     <Compile Include="Class\PeakMeter.cs">
       <SubType>Component</SubType>
@@ -82,6 +83,8 @@
     <Compile Include="Class\ScrollingTextControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Class\SM200_Json.cs" />
+    <Compile Include="Class\WaveOut.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -99,7 +102,6 @@
       <DependentUpon>SM200B.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Class\WaveOut.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
