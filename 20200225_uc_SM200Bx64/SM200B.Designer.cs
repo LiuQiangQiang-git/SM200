@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel_显示区 = new System.Windows.Forms.Panel();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -51,6 +51,49 @@
             this.label_显示区_坐标轴数值显示 = new System.Windows.Forms.Label();
             this.panel_菜单 = new System.Windows.Forms.Panel();
             this.panel_MenuTable = new System.Windows.Forms.Panel();
+            this.groupBox_实时扫频 = new System.Windows.Forms.GroupBox();
+            this.panel_实扫 = new System.Windows.Forms.Panel();
+            this.button_IQ采集_回放界面按钮 = new System.Windows.Forms.Button();
+            this.button_IQ采集_记录界面按钮 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel_IQ回放界面 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.label_IQ采集_时间间隔 = new System.Windows.Forms.Label();
+            this.button_IQ采集_回放文件选择 = new System.Windows.Forms.Button();
+            this.panel_IQ记录界面 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox_IQ采集 = new System.Windows.Forms.GroupBox();
+            this.panel_IQ = new System.Windows.Forms.Panel();
+            this.label_IQ_普通文本_采集大小单位 = new System.Windows.Forms.Label();
+            this.numericUpDown_IQ_采集大小 = new System.Windows.Forms.NumericUpDown();
+            this.label_IQ_普通文本_采集大小 = new System.Windows.Forms.Label();
+            this.button_IQ单次 = new System.Windows.Forms.Button();
+            this.button_IQ自动 = new System.Windows.Forms.Button();
+            this.button_IQ停止 = new System.Windows.Forms.Button();
+            this.label_IQ_普通文本_采样率 = new System.Windows.Forms.Label();
+            this.comboBox_IQ_采样率 = new System.Windows.Forms.ComboBox();
+            this.comboBox_IQ_触发沿 = new System.Windows.Forms.ComboBox();
+            this.label_IQ_普通文本_衰减值 = new System.Windows.Forms.Label();
+            this.comboBox_IQ_衰减值 = new System.Windows.Forms.ComboBox();
+            this.label_IQ_普通文本_触发沿 = new System.Windows.Forms.Label();
+            this.label_IQ_普通文本_参考电平 = new System.Windows.Forms.Label();
+            this.numericUpDown_IQ_参考电平 = new System.Windows.Forms.NumericUpDown();
+            this.label_IQ_普通文本_带宽单位 = new System.Windows.Forms.Label();
+            this.label_IQ_普通文本_参考电平单位 = new System.Windows.Forms.Label();
+            this.numericUpDown_IQ_带宽 = new System.Windows.Forms.NumericUpDown();
+            this.label_IQ_普通文本_带宽 = new System.Windows.Forms.Label();
+            this.label_IQ_普通文本_中心频率 = new System.Windows.Forms.Label();
+            this.comboBox_IQ_中心频率单位 = new System.Windows.Forms.ComboBox();
+            this.numericUpDown_IQ_中心频率 = new System.Windows.Forms.NumericUpDown();
             this.groupBox_扫频 = new System.Windows.Forms.GroupBox();
             this.panel_扫频 = new System.Windows.Forms.Panel();
             this.button_扫频停止 = new System.Windows.Forms.Button();
@@ -104,29 +147,6 @@
             this.comboBox_扫频_RBW单位 = new System.Windows.Forms.ComboBox();
             this.numericUpDown_扫频_RBW = new System.Windows.Forms.NumericUpDown();
             this.label_设置_普通文本_RBW = new System.Windows.Forms.Label();
-            this.groupBox_IQ采集 = new System.Windows.Forms.GroupBox();
-            this.panel_IQ = new System.Windows.Forms.Panel();
-            this.label_IQ_普通文本_采集大小单位 = new System.Windows.Forms.Label();
-            this.numericUpDown_IQ_采集大小 = new System.Windows.Forms.NumericUpDown();
-            this.label_IQ_普通文本_采集大小 = new System.Windows.Forms.Label();
-            this.button_IQ单次 = new System.Windows.Forms.Button();
-            this.button_IQ自动 = new System.Windows.Forms.Button();
-            this.button_IQ停止 = new System.Windows.Forms.Button();
-            this.label_IQ_普通文本_采样率 = new System.Windows.Forms.Label();
-            this.comboBox_IQ_采样率 = new System.Windows.Forms.ComboBox();
-            this.comboBox_IQ_触发沿 = new System.Windows.Forms.ComboBox();
-            this.label_IQ_普通文本_衰减值 = new System.Windows.Forms.Label();
-            this.comboBox_IQ_衰减值 = new System.Windows.Forms.ComboBox();
-            this.label_IQ_普通文本_触发沿 = new System.Windows.Forms.Label();
-            this.label_IQ_普通文本_参考电平 = new System.Windows.Forms.Label();
-            this.numericUpDown_IQ_参考电平 = new System.Windows.Forms.NumericUpDown();
-            this.label_IQ_普通文本_带宽单位 = new System.Windows.Forms.Label();
-            this.label_IQ_普通文本_参考电平单位 = new System.Windows.Forms.Label();
-            this.numericUpDown_IQ_带宽 = new System.Windows.Forms.NumericUpDown();
-            this.label_IQ_普通文本_带宽 = new System.Windows.Forms.Label();
-            this.label_IQ_普通文本_中心频率 = new System.Windows.Forms.Label();
-            this.comboBox_IQ_中心频率单位 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown_IQ_中心频率 = new System.Windows.Forms.NumericUpDown();
             this.groupBox_主要设置 = new System.Windows.Forms.GroupBox();
             this.panel_设置 = new System.Windows.Forms.Panel();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
@@ -167,8 +187,6 @@
             this.button_音频处理_加20Hz = new System.Windows.Forms.Button();
             this.label_音频处理_普通文本_低通单位 = new System.Windows.Forms.Label();
             this.button_音频处理_减1KHz = new System.Windows.Forms.Button();
-            this.groupBox_实时扫频 = new System.Windows.Forms.GroupBox();
-            this.panel_实扫 = new System.Windows.Forms.Panel();
             this.label_临时数据按钮 = new System.Windows.Forms.Label();
             this.label_其他相关按钮 = new System.Windows.Forms.Label();
             this.label_IQ采集按钮 = new System.Windows.Forms.Label();
@@ -178,6 +196,18 @@
             this.timer_信息查询及连接检测 = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel_设计显示 = new System.Windows.Forms.Panel();
+            this.groupBox_IQ_生成文件 = new System.Windows.Forms.GroupBox();
+            this.label_iq记录_文本_保存路径 = new System.Windows.Forms.Label();
+            this.textBox_iq记录_保存路径 = new System.Windows.Forms.TextBox();
+            this.button_iq记录_路径选择 = new System.Windows.Forms.Button();
+            this.textBox_iq记录_文件名 = new System.Windows.Forms.TextBox();
+            this.label_iq记录_文本_文件名 = new System.Windows.Forms.Label();
+            this.label_iq记录_文本_记录大小 = new System.Windows.Forms.Label();
+            this.numericUpDown_iq记录 = new System.Windows.Forms.NumericUpDown();
+            this.label_iq记录_文本_记录大小单位 = new System.Windows.Forms.Label();
+            this.button_iq记录 = new System.Windows.Forms.Button();
+            this.progressBar_iq记录 = new System.Windows.Forms.ProgressBar();
+            this.label_iq记录_文本_文件大小 = new System.Windows.Forms.Label();
             this.panel_显示区.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -185,6 +215,16 @@
             this.panel_下方信息栏.SuspendLayout();
             this.panel_菜单.SuspendLayout();
             this.panel_MenuTable.SuspendLayout();
+            this.groupBox_实时扫频.SuspendLayout();
+            this.panel_实扫.SuspendLayout();
+            this.panel_IQ回放界面.SuspendLayout();
+            this.panel_IQ记录界面.SuspendLayout();
+            this.groupBox_IQ采集.SuspendLayout();
+            this.panel_IQ.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IQ_采集大小)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IQ_参考电平)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IQ_带宽)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IQ_中心频率)).BeginInit();
             this.groupBox_扫频.SuspendLayout();
             this.panel_扫频.SuspendLayout();
             this.groupBox_扫频_频率设置.SuspendLayout();
@@ -197,12 +237,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_设置_参考电平)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_扫频_VBW)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_扫频_RBW)).BeginInit();
-            this.groupBox_IQ采集.SuspendLayout();
-            this.panel_IQ.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IQ_采集大小)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IQ_参考电平)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IQ_带宽)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IQ_中心频率)).BeginInit();
             this.groupBox_主要设置.SuspendLayout();
             this.panel_设置.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -213,7 +247,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_音频处理_去加重)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_音频处理_高通)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_音频处理_中心频率)).BeginInit();
-            this.groupBox_实时扫频.SuspendLayout();
+            this.groupBox_IQ_生成文件.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_iq记录)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_显示区
@@ -232,61 +267,61 @@
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.AxisX.ArrowStyle = System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle.Triangle;
-            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Gainsboro;
-            chartArea1.AxisX.LabelStyle.Format = "N2";
-            chartArea1.AxisX.LabelStyle.Interval = 0D;
-            chartArea1.AxisX.LabelStyle.IntervalOffset = 0D;
-            chartArea1.AxisX.LabelStyle.TruncatedLabels = true;
-            chartArea1.AxisX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisX.MajorTickMark.Enabled = false;
-            chartArea1.AxisX.MaximumAutoSize = 70F;
-            chartArea1.AxisX.MinorTickMark.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea1.AxisX.ScaleBreakStyle.BreakLineStyle = System.Windows.Forms.DataVisualization.Charting.BreakLineStyle.Straight;
-            chartArea1.AxisX.ScaleBreakStyle.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea1.AxisX.ScaleBreakStyle.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisX2.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea1.AxisX2.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.Gainsboro;
-            chartArea1.AxisY.LabelStyle.Format = "N1";
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisY.MajorTickMark.Enabled = false;
-            chartArea1.AxisY.MajorTickMark.LineColor = System.Drawing.Color.Firebrick;
-            chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisY.MinorTickMark.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.CursorX.Interval = 0.1D;
-            chartArea1.CursorX.IsUserSelectionEnabled = true;
-            chartArea1.CursorX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.CursorX.SelectionColor = System.Drawing.Color.LightBlue;
-            chartArea1.CursorY.Interval = 0.01D;
-            chartArea1.CursorY.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.CursorY.SelectionColor = System.Drawing.Color.LightBlue;
-            chartArea1.Name = "ChartArea1";
-            chartArea1.Position.Auto = false;
-            chartArea1.Position.Height = 100F;
-            chartArea1.Position.Width = 94F;
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea2.AxisX.ArrowStyle = System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle.Triangle;
+            chartArea2.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Gainsboro;
+            chartArea2.AxisX.LabelStyle.Format = "N2";
+            chartArea2.AxisX.LabelStyle.Interval = 0D;
+            chartArea2.AxisX.LabelStyle.IntervalOffset = 0D;
+            chartArea2.AxisX.LabelStyle.TruncatedLabels = true;
+            chartArea2.AxisX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.DimGray;
+            chartArea2.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea2.AxisX.MajorTickMark.Enabled = false;
+            chartArea2.AxisX.MaximumAutoSize = 70F;
+            chartArea2.AxisX.MinorTickMark.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea2.AxisX.ScaleBreakStyle.BreakLineStyle = System.Windows.Forms.DataVisualization.Charting.BreakLineStyle.Straight;
+            chartArea2.AxisX.ScaleBreakStyle.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea2.AxisX.ScaleBreakStyle.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea2.AxisX2.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea2.AxisX2.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea2.AxisY.LabelStyle.ForeColor = System.Drawing.Color.Gainsboro;
+            chartArea2.AxisY.LabelStyle.Format = "N1";
+            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.DimGray;
+            chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea2.AxisY.MajorTickMark.Enabled = false;
+            chartArea2.AxisY.MajorTickMark.LineColor = System.Drawing.Color.Firebrick;
+            chartArea2.AxisY.MinorGrid.LineColor = System.Drawing.Color.DimGray;
+            chartArea2.AxisY.MinorTickMark.LineColor = System.Drawing.Color.DimGray;
+            chartArea2.BackColor = System.Drawing.Color.Transparent;
+            chartArea2.CursorX.Interval = 0.1D;
+            chartArea2.CursorX.IsUserSelectionEnabled = true;
+            chartArea2.CursorX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea2.CursorX.SelectionColor = System.Drawing.Color.LightBlue;
+            chartArea2.CursorY.Interval = 0.01D;
+            chartArea2.CursorY.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea2.CursorY.SelectionColor = System.Drawing.Color.LightBlue;
+            chartArea2.Name = "ChartArea1";
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.Height = 100F;
+            chartArea2.Position.Width = 94F;
+            this.chart1.ChartAreas.Add(chartArea2);
             this.chart1.ContextMenuStrip = this.contextMenuStrip1;
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend1.Enabled = false;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend2.Enabled = false;
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(0, 23);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(616, 347);
             this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
+            this.chart1.Text = "选择文件";
             this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
             // 
             // contextMenuStrip1
@@ -443,14 +478,558 @@
             // 
             this.panel_MenuTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
             this.panel_MenuTable.Controls.Add(this.groupBox_IQ采集);
+            this.panel_MenuTable.Controls.Add(this.groupBox_实时扫频);
             this.panel_MenuTable.Controls.Add(this.groupBox_扫频);
             this.panel_MenuTable.Controls.Add(this.groupBox_主要设置);
             this.panel_MenuTable.Controls.Add(this.groupBox_临时显示点);
-            this.panel_MenuTable.Controls.Add(this.groupBox_实时扫频);
             this.panel_MenuTable.Location = new System.Drawing.Point(29, 3);
             this.panel_MenuTable.Name = "panel_MenuTable";
             this.panel_MenuTable.Size = new System.Drawing.Size(235, 314);
             this.panel_MenuTable.TabIndex = 2;
+            // 
+            // groupBox_实时扫频
+            // 
+            this.groupBox_实时扫频.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox_实时扫频.Controls.Add(this.panel_实扫);
+            this.groupBox_实时扫频.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox_实时扫频.Location = new System.Drawing.Point(0, 0);
+            this.groupBox_实时扫频.Name = "groupBox_实时扫频";
+            this.groupBox_实时扫频.Size = new System.Drawing.Size(235, 314);
+            this.groupBox_实时扫频.TabIndex = 1;
+            this.groupBox_实时扫频.TabStop = false;
+            this.groupBox_实时扫频.Text = "回放";
+            // 
+            // panel_实扫
+            // 
+            this.panel_实扫.AutoScroll = true;
+            this.panel_实扫.Controls.Add(this.button_IQ采集_回放界面按钮);
+            this.panel_实扫.Controls.Add(this.button_IQ采集_记录界面按钮);
+            this.panel_实扫.Controls.Add(this.label1);
+            this.panel_实扫.Controls.Add(this.panel_IQ回放界面);
+            this.panel_实扫.Controls.Add(this.panel_IQ记录界面);
+            this.panel_实扫.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_实扫.Location = new System.Drawing.Point(3, 17);
+            this.panel_实扫.Name = "panel_实扫";
+            this.panel_实扫.Size = new System.Drawing.Size(229, 294);
+            this.panel_实扫.TabIndex = 0;
+            // 
+            // button_IQ采集_回放界面按钮
+            // 
+            this.button_IQ采集_回放界面按钮.Location = new System.Drawing.Point(139, 6);
+            this.button_IQ采集_回放界面按钮.Name = "button_IQ采集_回放界面按钮";
+            this.button_IQ采集_回放界面按钮.Size = new System.Drawing.Size(65, 23);
+            this.button_IQ采集_回放界面按钮.TabIndex = 5;
+            this.button_IQ采集_回放界面按钮.Text = "IQ";
+            this.button_IQ采集_回放界面按钮.UseVisualStyleBackColor = true;
+            // 
+            // button_IQ采集_记录界面按钮
+            // 
+            this.button_IQ采集_记录界面按钮.Location = new System.Drawing.Point(5, 6);
+            this.button_IQ采集_记录界面按钮.Name = "button_IQ采集_记录界面按钮";
+            this.button_IQ采集_记录界面按钮.Size = new System.Drawing.Size(65, 23);
+            this.button_IQ采集_记录界面按钮.TabIndex = 4;
+            this.button_IQ采集_记录界面按钮.Text = "扫频";
+            this.button_IQ采集_记录界面按钮.UseVisualStyleBackColor = true;
+            this.button_IQ采集_记录界面按钮.Click += new System.EventHandler(this.button_IQ采集_记录界面按钮_Click_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 167);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "文件信息";
+            // 
+            // panel_IQ回放界面
+            // 
+            this.panel_IQ回放界面.Controls.Add(this.label3);
+            this.panel_IQ回放界面.Controls.Add(this.textBox2);
+            this.panel_IQ回放界面.Controls.Add(this.button5);
+            this.panel_IQ回放界面.Controls.Add(this.button6);
+            this.panel_IQ回放界面.Controls.Add(this.button7);
+            this.panel_IQ回放界面.Controls.Add(this.label_IQ采集_时间间隔);
+            this.panel_IQ回放界面.Controls.Add(this.button_IQ采集_回放文件选择);
+            this.panel_IQ回放界面.Location = new System.Drawing.Point(4, 31);
+            this.panel_IQ回放界面.Name = "panel_IQ回放界面";
+            this.panel_IQ回放界面.Size = new System.Drawing.Size(199, 129);
+            this.panel_IQ回放界面.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 35);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "文件位置";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(59, 31);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(137, 21);
+            this.textBox2.TabIndex = 13;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(78, 54);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(30, 30);
+            this.button5.TabIndex = 12;
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(42, 54);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(30, 30);
+            this.button6.TabIndex = 11;
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(6, 54);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(30, 30);
+            this.button7.TabIndex = 10;
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // label_IQ采集_时间间隔
+            // 
+            this.label_IQ采集_时间间隔.AutoSize = true;
+            this.label_IQ采集_时间间隔.Location = new System.Drawing.Point(4, 108);
+            this.label_IQ采集_时间间隔.Name = "label_IQ采集_时间间隔";
+            this.label_IQ采集_时间间隔.Size = new System.Drawing.Size(65, 12);
+            this.label_IQ采集_时间间隔.TabIndex = 0;
+            this.label_IQ采集_时间间隔.Text = "播放间隔：";
+            // 
+            // button_IQ采集_回放文件选择
+            // 
+            this.button_IQ采集_回放文件选择.Location = new System.Drawing.Point(1, 5);
+            this.button_IQ采集_回放文件选择.Name = "button_IQ采集_回放文件选择";
+            this.button_IQ采集_回放文件选择.Size = new System.Drawing.Size(195, 23);
+            this.button_IQ采集_回放文件选择.TabIndex = 0;
+            this.button_IQ采集_回放文件选择.Text = "选择文件";
+            this.button_IQ采集_回放文件选择.UseVisualStyleBackColor = true;
+            // 
+            // panel_IQ记录界面
+            // 
+            this.panel_IQ记录界面.Controls.Add(this.label2);
+            this.panel_IQ记录界面.Controls.Add(this.textBox1);
+            this.panel_IQ记录界面.Controls.Add(this.button4);
+            this.panel_IQ记录界面.Controls.Add(this.button3);
+            this.panel_IQ记录界面.Controls.Add(this.button2);
+            this.panel_IQ记录界面.Controls.Add(this.button1);
+            this.panel_IQ记录界面.Location = new System.Drawing.Point(4, 31);
+            this.panel_IQ记录界面.Name = "panel_IQ记录界面";
+            this.panel_IQ记录界面.Size = new System.Drawing.Size(199, 129);
+            this.panel_IQ记录界面.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 35);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "文件位置";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(59, 31);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(137, 21);
+            this.textBox1.TabIndex = 8;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(78, 54);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(30, 30);
+            this.button4.TabIndex = 7;
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(42, 54);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(30, 30);
+            this.button3.TabIndex = 6;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(6, 54);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(30, 30);
+            this.button2.TabIndex = 5;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(195, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "选择文件";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox_IQ采集
+            // 
+            this.groupBox_IQ采集.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox_IQ采集.Controls.Add(this.panel_IQ);
+            this.groupBox_IQ采集.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox_IQ采集.Location = new System.Drawing.Point(0, 0);
+            this.groupBox_IQ采集.Name = "groupBox_IQ采集";
+            this.groupBox_IQ采集.Size = new System.Drawing.Size(235, 314);
+            this.groupBox_IQ采集.TabIndex = 2;
+            this.groupBox_IQ采集.TabStop = false;
+            this.groupBox_IQ采集.Text = "IQ采集";
+            // 
+            // panel_IQ
+            // 
+            this.panel_IQ.AutoScroll = true;
+            this.panel_IQ.BackColor = System.Drawing.Color.Transparent;
+            this.panel_IQ.Controls.Add(this.groupBox_IQ_生成文件);
+            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_采集大小单位);
+            this.panel_IQ.Controls.Add(this.numericUpDown_IQ_采集大小);
+            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_采集大小);
+            this.panel_IQ.Controls.Add(this.button_IQ单次);
+            this.panel_IQ.Controls.Add(this.button_IQ自动);
+            this.panel_IQ.Controls.Add(this.button_IQ停止);
+            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_采样率);
+            this.panel_IQ.Controls.Add(this.comboBox_IQ_采样率);
+            this.panel_IQ.Controls.Add(this.comboBox_IQ_触发沿);
+            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_衰减值);
+            this.panel_IQ.Controls.Add(this.comboBox_IQ_衰减值);
+            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_触发沿);
+            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_参考电平);
+            this.panel_IQ.Controls.Add(this.numericUpDown_IQ_参考电平);
+            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_带宽单位);
+            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_参考电平单位);
+            this.panel_IQ.Controls.Add(this.numericUpDown_IQ_带宽);
+            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_带宽);
+            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_中心频率);
+            this.panel_IQ.Controls.Add(this.comboBox_IQ_中心频率单位);
+            this.panel_IQ.Controls.Add(this.numericUpDown_IQ_中心频率);
+            this.panel_IQ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_IQ.Location = new System.Drawing.Point(3, 17);
+            this.panel_IQ.Name = "panel_IQ";
+            this.panel_IQ.Size = new System.Drawing.Size(229, 294);
+            this.panel_IQ.TabIndex = 90;
+            // 
+            // label_IQ_普通文本_采集大小单位
+            // 
+            this.label_IQ_普通文本_采集大小单位.AutoSize = true;
+            this.label_IQ_普通文本_采集大小单位.ForeColor = System.Drawing.Color.Black;
+            this.label_IQ_普通文本_采集大小单位.Location = new System.Drawing.Point(185, 185);
+            this.label_IQ_普通文本_采集大小单位.Name = "label_IQ_普通文本_采集大小单位";
+            this.label_IQ_普通文本_采集大小单位.Size = new System.Drawing.Size(17, 12);
+            this.label_IQ_普通文本_采集大小单位.TabIndex = 95;
+            this.label_IQ_普通文本_采集大小单位.Text = "ms";
+            // 
+            // numericUpDown_IQ_采集大小
+            // 
+            this.numericUpDown_IQ_采集大小.BackColor = System.Drawing.Color.White;
+            this.numericUpDown_IQ_采集大小.DecimalPlaces = 4;
+            this.numericUpDown_IQ_采集大小.ForeColor = System.Drawing.Color.Black;
+            this.numericUpDown_IQ_采集大小.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.numericUpDown_IQ_采集大小.Location = new System.Drawing.Point(62, 183);
+            this.numericUpDown_IQ_采集大小.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_IQ_采集大小.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
+            this.numericUpDown_IQ_采集大小.Name = "numericUpDown_IQ_采集大小";
+            this.numericUpDown_IQ_采集大小.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown_IQ_采集大小.TabIndex = 94;
+            this.numericUpDown_IQ_采集大小.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_IQ_采集大小.ValueChanged += new System.EventHandler(this.numericUpDown_IQ_采集大小_ValueChanged);
+            // 
+            // label_IQ_普通文本_采集大小
+            // 
+            this.label_IQ_普通文本_采集大小.AutoSize = true;
+            this.label_IQ_普通文本_采集大小.ForeColor = System.Drawing.Color.Black;
+            this.label_IQ_普通文本_采集大小.Location = new System.Drawing.Point(3, 185);
+            this.label_IQ_普通文本_采集大小.Name = "label_IQ_普通文本_采集大小";
+            this.label_IQ_普通文本_采集大小.Size = new System.Drawing.Size(53, 12);
+            this.label_IQ_普通文本_采集大小.TabIndex = 93;
+            this.label_IQ_普通文本_采集大小.Text = "实时大小";
+            // 
+            // button_IQ单次
+            // 
+            this.button_IQ单次.Image = global::SM200Bx64.Properties.Resources.单步;
+            this.button_IQ单次.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_IQ单次.Location = new System.Drawing.Point(3, 2);
+            this.button_IQ单次.Margin = new System.Windows.Forms.Padding(2);
+            this.button_IQ单次.Name = "button_IQ单次";
+            this.button_IQ单次.Size = new System.Drawing.Size(56, 23);
+            this.button_IQ单次.TabIndex = 92;
+            this.button_IQ单次.Text = "单次";
+            this.button_IQ单次.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button_IQ单次.UseVisualStyleBackColor = true;
+            this.button_IQ单次.Click += new System.EventHandler(this.button_IQ单次_Click);
+            // 
+            // button_IQ自动
+            // 
+            this.button_IQ自动.Image = global::SM200Bx64.Properties.Resources.自动;
+            this.button_IQ自动.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_IQ自动.Location = new System.Drawing.Point(61, 2);
+            this.button_IQ自动.Margin = new System.Windows.Forms.Padding(2);
+            this.button_IQ自动.Name = "button_IQ自动";
+            this.button_IQ自动.Size = new System.Drawing.Size(56, 23);
+            this.button_IQ自动.TabIndex = 88;
+            this.button_IQ自动.Text = "自动";
+            this.button_IQ自动.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button_IQ自动.UseVisualStyleBackColor = true;
+            this.button_IQ自动.Click += new System.EventHandler(this.button_IQ自动_Click);
+            // 
+            // button_IQ停止
+            // 
+            this.button_IQ停止.Image = global::SM200Bx64.Properties.Resources.终止;
+            this.button_IQ停止.Location = new System.Drawing.Point(185, 2);
+            this.button_IQ停止.Margin = new System.Windows.Forms.Padding(2);
+            this.button_IQ停止.Name = "button_IQ停止";
+            this.button_IQ停止.Size = new System.Drawing.Size(23, 23);
+            this.button_IQ停止.TabIndex = 89;
+            this.button_IQ停止.UseVisualStyleBackColor = true;
+            this.button_IQ停止.Click += new System.EventHandler(this.button_IQ停止_Click);
+            // 
+            // label_IQ_普通文本_采样率
+            // 
+            this.label_IQ_普通文本_采样率.AutoSize = true;
+            this.label_IQ_普通文本_采样率.Location = new System.Drawing.Point(3, 111);
+            this.label_IQ_普通文本_采样率.Name = "label_IQ_普通文本_采样率";
+            this.label_IQ_普通文本_采样率.Size = new System.Drawing.Size(53, 12);
+            this.label_IQ_普通文本_采样率.TabIndex = 0;
+            this.label_IQ_普通文本_采样率.Text = "采 样 率";
+            // 
+            // comboBox_IQ_采样率
+            // 
+            this.comboBox_IQ_采样率.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_IQ_采样率.FormattingEnabled = true;
+            this.comboBox_IQ_采样率.Items.AddRange(new object[] {
+            "250MS/s",
+            "50MS/s",
+            "25Ms/s",
+            "12.5Ms/s",
+            "6.25Ms/s",
+            "3.125Ms/s",
+            "1.562Ms/s",
+            "781.25KS/s",
+            "390.625KS/s",
+            "195.312KS/s",
+            "97.656KS/s",
+            "48.828KS/s",
+            "24.414KS/s",
+            "12.207KS/s"});
+            this.comboBox_IQ_采样率.Location = new System.Drawing.Point(62, 108);
+            this.comboBox_IQ_采样率.Name = "comboBox_IQ_采样率";
+            this.comboBox_IQ_采样率.Size = new System.Drawing.Size(146, 20);
+            this.comboBox_IQ_采样率.TabIndex = 1;
+            this.comboBox_IQ_采样率.SelectedIndexChanged += new System.EventHandler(this.comboBox_IQ_采样率_SelectedIndexChanged);
+            // 
+            // comboBox_IQ_触发沿
+            // 
+            this.comboBox_IQ_触发沿.AutoCompleteCustomSource.AddRange(new string[] {
+            "GHz",
+            "MHz",
+            "KHz",
+            "Hz"});
+            this.comboBox_IQ_触发沿.BackColor = System.Drawing.Color.White;
+            this.comboBox_IQ_触发沿.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_IQ_触发沿.ForeColor = System.Drawing.Color.Black;
+            this.comboBox_IQ_触发沿.FormattingEnabled = true;
+            this.comboBox_IQ_触发沿.Items.AddRange(new object[] {
+            "上升沿",
+            "下降沿"});
+            this.comboBox_IQ_触发沿.Location = new System.Drawing.Point(62, 157);
+            this.comboBox_IQ_触发沿.Name = "comboBox_IQ_触发沿";
+            this.comboBox_IQ_触发沿.Size = new System.Drawing.Size(147, 20);
+            this.comboBox_IQ_触发沿.TabIndex = 87;
+            this.comboBox_IQ_触发沿.SelectedIndexChanged += new System.EventHandler(this.comboBox_IQ_触发沿_SelectedIndexChanged);
+            // 
+            // label_IQ_普通文本_衰减值
+            // 
+            this.label_IQ_普通文本_衰减值.AutoSize = true;
+            this.label_IQ_普通文本_衰减值.ForeColor = System.Drawing.Color.Black;
+            this.label_IQ_普通文本_衰减值.Location = new System.Drawing.Point(2, 32);
+            this.label_IQ_普通文本_衰减值.Name = "label_IQ_普通文本_衰减值";
+            this.label_IQ_普通文本_衰减值.Size = new System.Drawing.Size(53, 12);
+            this.label_IQ_普通文本_衰减值.TabIndex = 71;
+            this.label_IQ_普通文本_衰减值.Text = "衰 减 值";
+            // 
+            // comboBox_IQ_衰减值
+            // 
+            this.comboBox_IQ_衰减值.BackColor = System.Drawing.Color.White;
+            this.comboBox_IQ_衰减值.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_IQ_衰减值.ForeColor = System.Drawing.Color.Black;
+            this.comboBox_IQ_衰减值.FormattingEnabled = true;
+            this.comboBox_IQ_衰减值.Items.AddRange(new object[] {
+            "自动",
+            "0dB",
+            "5dB",
+            "10dB",
+            "15dB",
+            "20dB",
+            "25dB",
+            "30dB"});
+            this.comboBox_IQ_衰减值.Location = new System.Drawing.Point(62, 28);
+            this.comboBox_IQ_衰减值.Name = "comboBox_IQ_衰减值";
+            this.comboBox_IQ_衰减值.Size = new System.Drawing.Size(146, 20);
+            this.comboBox_IQ_衰减值.TabIndex = 72;
+            this.comboBox_IQ_衰减值.SelectedIndexChanged += new System.EventHandler(this.comboBox_IQ_衰减值_SelectedIndexChanged);
+            // 
+            // label_IQ_普通文本_触发沿
+            // 
+            this.label_IQ_普通文本_触发沿.AutoSize = true;
+            this.label_IQ_普通文本_触发沿.ForeColor = System.Drawing.Color.Black;
+            this.label_IQ_普通文本_触发沿.Location = new System.Drawing.Point(3, 160);
+            this.label_IQ_普通文本_触发沿.Name = "label_IQ_普通文本_触发沿";
+            this.label_IQ_普通文本_触发沿.Size = new System.Drawing.Size(53, 12);
+            this.label_IQ_普通文本_触发沿.TabIndex = 85;
+            this.label_IQ_普通文本_触发沿.Text = "触 发 沿";
+            // 
+            // label_IQ_普通文本_参考电平
+            // 
+            this.label_IQ_普通文本_参考电平.AutoSize = true;
+            this.label_IQ_普通文本_参考电平.ForeColor = System.Drawing.Color.Black;
+            this.label_IQ_普通文本_参考电平.Location = new System.Drawing.Point(2, 57);
+            this.label_IQ_普通文本_参考电平.Name = "label_IQ_普通文本_参考电平";
+            this.label_IQ_普通文本_参考电平.Size = new System.Drawing.Size(53, 12);
+            this.label_IQ_普通文本_参考电平.TabIndex = 73;
+            this.label_IQ_普通文本_参考电平.Text = "参考电平";
+            // 
+            // numericUpDown_IQ_参考电平
+            // 
+            this.numericUpDown_IQ_参考电平.BackColor = System.Drawing.Color.White;
+            this.numericUpDown_IQ_参考电平.DecimalPlaces = 3;
+            this.numericUpDown_IQ_参考电平.ForeColor = System.Drawing.Color.Black;
+            this.numericUpDown_IQ_参考电平.Location = new System.Drawing.Point(62, 54);
+            this.numericUpDown_IQ_参考电平.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numericUpDown_IQ_参考电平.Minimum = new decimal(new int[] {
+            130,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown_IQ_参考电平.Name = "numericUpDown_IQ_参考电平";
+            this.numericUpDown_IQ_参考电平.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown_IQ_参考电平.TabIndex = 74;
+            this.numericUpDown_IQ_参考电平.ValueChanged += new System.EventHandler(this.numericUpDown_IQ_参考电平_ValueChanged);
+            // 
+            // label_IQ_普通文本_带宽单位
+            // 
+            this.label_IQ_普通文本_带宽单位.AutoSize = true;
+            this.label_IQ_普通文本_带宽单位.ForeColor = System.Drawing.Color.Black;
+            this.label_IQ_普通文本_带宽单位.Location = new System.Drawing.Point(185, 136);
+            this.label_IQ_普通文本_带宽单位.Name = "label_IQ_普通文本_带宽单位";
+            this.label_IQ_普通文本_带宽单位.Size = new System.Drawing.Size(23, 12);
+            this.label_IQ_普通文本_带宽单位.TabIndex = 83;
+            this.label_IQ_普通文本_带宽单位.Text = "MHz";
+            // 
+            // label_IQ_普通文本_参考电平单位
+            // 
+            this.label_IQ_普通文本_参考电平单位.AutoSize = true;
+            this.label_IQ_普通文本_参考电平单位.ForeColor = System.Drawing.Color.Black;
+            this.label_IQ_普通文本_参考电平单位.Location = new System.Drawing.Point(185, 57);
+            this.label_IQ_普通文本_参考电平单位.Name = "label_IQ_普通文本_参考电平单位";
+            this.label_IQ_普通文本_参考电平单位.Size = new System.Drawing.Size(23, 12);
+            this.label_IQ_普通文本_参考电平单位.TabIndex = 75;
+            this.label_IQ_普通文本_参考电平单位.Text = "dBm";
+            // 
+            // numericUpDown_IQ_带宽
+            // 
+            this.numericUpDown_IQ_带宽.BackColor = System.Drawing.Color.White;
+            this.numericUpDown_IQ_带宽.DecimalPlaces = 3;
+            this.numericUpDown_IQ_带宽.ForeColor = System.Drawing.Color.Black;
+            this.numericUpDown_IQ_带宽.Location = new System.Drawing.Point(62, 134);
+            this.numericUpDown_IQ_带宽.Maximum = new decimal(new int[] {
+            160,
+            0,
+            0,
+            0});
+            this.numericUpDown_IQ_带宽.Name = "numericUpDown_IQ_带宽";
+            this.numericUpDown_IQ_带宽.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown_IQ_带宽.TabIndex = 82;
+            this.numericUpDown_IQ_带宽.ValueChanged += new System.EventHandler(this.numericUpDown_IQ_带宽_ValueChanged);
+            // 
+            // label_IQ_普通文本_带宽
+            // 
+            this.label_IQ_普通文本_带宽.AutoSize = true;
+            this.label_IQ_普通文本_带宽.ForeColor = System.Drawing.Color.Black;
+            this.label_IQ_普通文本_带宽.Location = new System.Drawing.Point(3, 136);
+            this.label_IQ_普通文本_带宽.Name = "label_IQ_普通文本_带宽";
+            this.label_IQ_普通文本_带宽.Size = new System.Drawing.Size(53, 12);
+            this.label_IQ_普通文本_带宽.TabIndex = 81;
+            this.label_IQ_普通文本_带宽.Text = "带    宽";
+            // 
+            // label_IQ_普通文本_中心频率
+            // 
+            this.label_IQ_普通文本_中心频率.AutoSize = true;
+            this.label_IQ_普通文本_中心频率.ForeColor = System.Drawing.Color.Black;
+            this.label_IQ_普通文本_中心频率.Location = new System.Drawing.Point(2, 86);
+            this.label_IQ_普通文本_中心频率.Name = "label_IQ_普通文本_中心频率";
+            this.label_IQ_普通文本_中心频率.Size = new System.Drawing.Size(53, 12);
+            this.label_IQ_普通文本_中心频率.TabIndex = 76;
+            this.label_IQ_普通文本_中心频率.Text = "中心频率";
+            // 
+            // comboBox_IQ_中心频率单位
+            // 
+            this.comboBox_IQ_中心频率单位.AutoCompleteCustomSource.AddRange(new string[] {
+            "GHz",
+            "MHz",
+            "KHz",
+            "Hz"});
+            this.comboBox_IQ_中心频率单位.BackColor = System.Drawing.Color.White;
+            this.comboBox_IQ_中心频率单位.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_IQ_中心频率单位.ForeColor = System.Drawing.Color.Black;
+            this.comboBox_IQ_中心频率单位.FormattingEnabled = true;
+            this.comboBox_IQ_中心频率单位.Items.AddRange(new object[] {
+            "GHz",
+            "MHz",
+            "KHz",
+            "Hz"});
+            this.comboBox_IQ_中心频率单位.Location = new System.Drawing.Point(165, 83);
+            this.comboBox_IQ_中心频率单位.Name = "comboBox_IQ_中心频率单位";
+            this.comboBox_IQ_中心频率单位.Size = new System.Drawing.Size(43, 20);
+            this.comboBox_IQ_中心频率单位.TabIndex = 78;
+            this.comboBox_IQ_中心频率单位.SelectedIndexChanged += new System.EventHandler(this.comboBox_IQ_中心频率单位_SelectedIndexChanged);
+            // 
+            // numericUpDown_IQ_中心频率
+            // 
+            this.numericUpDown_IQ_中心频率.BackColor = System.Drawing.Color.White;
+            this.numericUpDown_IQ_中心频率.DecimalPlaces = 6;
+            this.numericUpDown_IQ_中心频率.ForeColor = System.Drawing.Color.Black;
+            this.numericUpDown_IQ_中心频率.Location = new System.Drawing.Point(62, 82);
+            this.numericUpDown_IQ_中心频率.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
+            this.numericUpDown_IQ_中心频率.Name = "numericUpDown_IQ_中心频率";
+            this.numericUpDown_IQ_中心频率.Size = new System.Drawing.Size(98, 21);
+            this.numericUpDown_IQ_中心频率.TabIndex = 77;
+            this.numericUpDown_IQ_中心频率.ValueChanged += new System.EventHandler(this.numericUpDown_IQ_中心频率_ValueChanged);
             // 
             // groupBox_扫频
             // 
@@ -1226,359 +1805,6 @@
             this.label_设置_普通文本_RBW.TabIndex = 48;
             this.label_设置_普通文本_RBW.Text = "RBW(注:RBW需要大于VBW)";
             // 
-            // groupBox_IQ采集
-            // 
-            this.groupBox_IQ采集.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox_IQ采集.Controls.Add(this.panel_IQ);
-            this.groupBox_IQ采集.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox_IQ采集.Location = new System.Drawing.Point(0, 0);
-            this.groupBox_IQ采集.Name = "groupBox_IQ采集";
-            this.groupBox_IQ采集.Size = new System.Drawing.Size(235, 314);
-            this.groupBox_IQ采集.TabIndex = 2;
-            this.groupBox_IQ采集.TabStop = false;
-            this.groupBox_IQ采集.Text = "IQ采集";
-            // 
-            // panel_IQ
-            // 
-            this.panel_IQ.AutoScroll = true;
-            this.panel_IQ.BackColor = System.Drawing.Color.Transparent;
-            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_采集大小单位);
-            this.panel_IQ.Controls.Add(this.numericUpDown_IQ_采集大小);
-            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_采集大小);
-            this.panel_IQ.Controls.Add(this.button_IQ单次);
-            this.panel_IQ.Controls.Add(this.button_IQ自动);
-            this.panel_IQ.Controls.Add(this.button_IQ停止);
-            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_采样率);
-            this.panel_IQ.Controls.Add(this.comboBox_IQ_采样率);
-            this.panel_IQ.Controls.Add(this.comboBox_IQ_触发沿);
-            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_衰减值);
-            this.panel_IQ.Controls.Add(this.comboBox_IQ_衰减值);
-            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_触发沿);
-            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_参考电平);
-            this.panel_IQ.Controls.Add(this.numericUpDown_IQ_参考电平);
-            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_带宽单位);
-            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_参考电平单位);
-            this.panel_IQ.Controls.Add(this.numericUpDown_IQ_带宽);
-            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_带宽);
-            this.panel_IQ.Controls.Add(this.label_IQ_普通文本_中心频率);
-            this.panel_IQ.Controls.Add(this.comboBox_IQ_中心频率单位);
-            this.panel_IQ.Controls.Add(this.numericUpDown_IQ_中心频率);
-            this.panel_IQ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_IQ.Location = new System.Drawing.Point(3, 17);
-            this.panel_IQ.Name = "panel_IQ";
-            this.panel_IQ.Size = new System.Drawing.Size(229, 294);
-            this.panel_IQ.TabIndex = 90;
-            // 
-            // label_IQ_普通文本_采集大小单位
-            // 
-            this.label_IQ_普通文本_采集大小单位.AutoSize = true;
-            this.label_IQ_普通文本_采集大小单位.ForeColor = System.Drawing.Color.Black;
-            this.label_IQ_普通文本_采集大小单位.Location = new System.Drawing.Point(185, 185);
-            this.label_IQ_普通文本_采集大小单位.Name = "label_IQ_普通文本_采集大小单位";
-            this.label_IQ_普通文本_采集大小单位.Size = new System.Drawing.Size(17, 12);
-            this.label_IQ_普通文本_采集大小单位.TabIndex = 95;
-            this.label_IQ_普通文本_采集大小单位.Text = "ms";
-            // 
-            // numericUpDown_IQ_采集大小
-            // 
-            this.numericUpDown_IQ_采集大小.BackColor = System.Drawing.Color.White;
-            this.numericUpDown_IQ_采集大小.DecimalPlaces = 4;
-            this.numericUpDown_IQ_采集大小.ForeColor = System.Drawing.Color.Black;
-            this.numericUpDown_IQ_采集大小.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            196608});
-            this.numericUpDown_IQ_采集大小.Location = new System.Drawing.Point(62, 183);
-            this.numericUpDown_IQ_采集大小.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown_IQ_采集大小.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            196608});
-            this.numericUpDown_IQ_采集大小.Name = "numericUpDown_IQ_采集大小";
-            this.numericUpDown_IQ_采集大小.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown_IQ_采集大小.TabIndex = 94;
-            this.numericUpDown_IQ_采集大小.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown_IQ_采集大小.ValueChanged += new System.EventHandler(this.numericUpDown_IQ_采集大小_ValueChanged);
-            // 
-            // label_IQ_普通文本_采集大小
-            // 
-            this.label_IQ_普通文本_采集大小.AutoSize = true;
-            this.label_IQ_普通文本_采集大小.ForeColor = System.Drawing.Color.Black;
-            this.label_IQ_普通文本_采集大小.Location = new System.Drawing.Point(3, 185);
-            this.label_IQ_普通文本_采集大小.Name = "label_IQ_普通文本_采集大小";
-            this.label_IQ_普通文本_采集大小.Size = new System.Drawing.Size(53, 12);
-            this.label_IQ_普通文本_采集大小.TabIndex = 93;
-            this.label_IQ_普通文本_采集大小.Text = "采集大小";
-            // 
-            // button_IQ单次
-            // 
-            this.button_IQ单次.Image = global::SM200Bx64.Properties.Resources.单步;
-            this.button_IQ单次.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_IQ单次.Location = new System.Drawing.Point(3, 2);
-            this.button_IQ单次.Margin = new System.Windows.Forms.Padding(2);
-            this.button_IQ单次.Name = "button_IQ单次";
-            this.button_IQ单次.Size = new System.Drawing.Size(56, 23);
-            this.button_IQ单次.TabIndex = 92;
-            this.button_IQ单次.Text = "单次";
-            this.button_IQ单次.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button_IQ单次.UseVisualStyleBackColor = true;
-            this.button_IQ单次.Click += new System.EventHandler(this.button_IQ单次_Click);
-            // 
-            // button_IQ自动
-            // 
-            this.button_IQ自动.Image = global::SM200Bx64.Properties.Resources.自动;
-            this.button_IQ自动.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_IQ自动.Location = new System.Drawing.Point(61, 2);
-            this.button_IQ自动.Margin = new System.Windows.Forms.Padding(2);
-            this.button_IQ自动.Name = "button_IQ自动";
-            this.button_IQ自动.Size = new System.Drawing.Size(56, 23);
-            this.button_IQ自动.TabIndex = 88;
-            this.button_IQ自动.Text = "自动";
-            this.button_IQ自动.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button_IQ自动.UseVisualStyleBackColor = true;
-            this.button_IQ自动.Click += new System.EventHandler(this.button_IQ自动_Click);
-            // 
-            // button_IQ停止
-            // 
-            this.button_IQ停止.Image = global::SM200Bx64.Properties.Resources.终止;
-            this.button_IQ停止.Location = new System.Drawing.Point(185, 2);
-            this.button_IQ停止.Margin = new System.Windows.Forms.Padding(2);
-            this.button_IQ停止.Name = "button_IQ停止";
-            this.button_IQ停止.Size = new System.Drawing.Size(23, 23);
-            this.button_IQ停止.TabIndex = 89;
-            this.button_IQ停止.UseVisualStyleBackColor = true;
-            this.button_IQ停止.Click += new System.EventHandler(this.button_IQ停止_Click);
-            // 
-            // label_IQ_普通文本_采样率
-            // 
-            this.label_IQ_普通文本_采样率.AutoSize = true;
-            this.label_IQ_普通文本_采样率.Location = new System.Drawing.Point(3, 111);
-            this.label_IQ_普通文本_采样率.Name = "label_IQ_普通文本_采样率";
-            this.label_IQ_普通文本_采样率.Size = new System.Drawing.Size(53, 12);
-            this.label_IQ_普通文本_采样率.TabIndex = 0;
-            this.label_IQ_普通文本_采样率.Text = "采 样 率";
-            // 
-            // comboBox_IQ_采样率
-            // 
-            this.comboBox_IQ_采样率.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_IQ_采样率.FormattingEnabled = true;
-            this.comboBox_IQ_采样率.Items.AddRange(new object[] {
-            "250MS/s",
-            "50MS/s",
-            "25Ms/s",
-            "12.5Ms/s",
-            "6.25Ms/s",
-            "3.125Ms/s",
-            "1.562Ms/s",
-            "781.25KS/s",
-            "390.625KS/s",
-            "195.312KS/s",
-            "97.656KS/s",
-            "48.828KS/s",
-            "24.414KS/s",
-            "12.207KS/s"});
-            this.comboBox_IQ_采样率.Location = new System.Drawing.Point(62, 108);
-            this.comboBox_IQ_采样率.Name = "comboBox_IQ_采样率";
-            this.comboBox_IQ_采样率.Size = new System.Drawing.Size(146, 20);
-            this.comboBox_IQ_采样率.TabIndex = 1;
-            this.comboBox_IQ_采样率.SelectedIndexChanged += new System.EventHandler(this.comboBox_IQ_采样率_SelectedIndexChanged);
-            // 
-            // comboBox_IQ_触发沿
-            // 
-            this.comboBox_IQ_触发沿.AutoCompleteCustomSource.AddRange(new string[] {
-            "GHz",
-            "MHz",
-            "KHz",
-            "Hz"});
-            this.comboBox_IQ_触发沿.BackColor = System.Drawing.Color.White;
-            this.comboBox_IQ_触发沿.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_IQ_触发沿.ForeColor = System.Drawing.Color.Black;
-            this.comboBox_IQ_触发沿.FormattingEnabled = true;
-            this.comboBox_IQ_触发沿.Items.AddRange(new object[] {
-            "上升沿",
-            "下降沿"});
-            this.comboBox_IQ_触发沿.Location = new System.Drawing.Point(62, 157);
-            this.comboBox_IQ_触发沿.Name = "comboBox_IQ_触发沿";
-            this.comboBox_IQ_触发沿.Size = new System.Drawing.Size(147, 20);
-            this.comboBox_IQ_触发沿.TabIndex = 87;
-            this.comboBox_IQ_触发沿.SelectedIndexChanged += new System.EventHandler(this.comboBox_IQ_触发沿_SelectedIndexChanged);
-            // 
-            // label_IQ_普通文本_衰减值
-            // 
-            this.label_IQ_普通文本_衰减值.AutoSize = true;
-            this.label_IQ_普通文本_衰减值.ForeColor = System.Drawing.Color.Black;
-            this.label_IQ_普通文本_衰减值.Location = new System.Drawing.Point(2, 32);
-            this.label_IQ_普通文本_衰减值.Name = "label_IQ_普通文本_衰减值";
-            this.label_IQ_普通文本_衰减值.Size = new System.Drawing.Size(53, 12);
-            this.label_IQ_普通文本_衰减值.TabIndex = 71;
-            this.label_IQ_普通文本_衰减值.Text = "衰 减 值";
-            // 
-            // comboBox_IQ_衰减值
-            // 
-            this.comboBox_IQ_衰减值.BackColor = System.Drawing.Color.White;
-            this.comboBox_IQ_衰减值.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_IQ_衰减值.ForeColor = System.Drawing.Color.Black;
-            this.comboBox_IQ_衰减值.FormattingEnabled = true;
-            this.comboBox_IQ_衰减值.Items.AddRange(new object[] {
-            "自动",
-            "0dB",
-            "5dB",
-            "10dB",
-            "15dB",
-            "20dB",
-            "25dB",
-            "30dB"});
-            this.comboBox_IQ_衰减值.Location = new System.Drawing.Point(62, 28);
-            this.comboBox_IQ_衰减值.Name = "comboBox_IQ_衰减值";
-            this.comboBox_IQ_衰减值.Size = new System.Drawing.Size(146, 20);
-            this.comboBox_IQ_衰减值.TabIndex = 72;
-            this.comboBox_IQ_衰减值.SelectedIndexChanged += new System.EventHandler(this.comboBox_IQ_衰减值_SelectedIndexChanged);
-            // 
-            // label_IQ_普通文本_触发沿
-            // 
-            this.label_IQ_普通文本_触发沿.AutoSize = true;
-            this.label_IQ_普通文本_触发沿.ForeColor = System.Drawing.Color.Black;
-            this.label_IQ_普通文本_触发沿.Location = new System.Drawing.Point(3, 160);
-            this.label_IQ_普通文本_触发沿.Name = "label_IQ_普通文本_触发沿";
-            this.label_IQ_普通文本_触发沿.Size = new System.Drawing.Size(53, 12);
-            this.label_IQ_普通文本_触发沿.TabIndex = 85;
-            this.label_IQ_普通文本_触发沿.Text = "触 发 沿";
-            // 
-            // label_IQ_普通文本_参考电平
-            // 
-            this.label_IQ_普通文本_参考电平.AutoSize = true;
-            this.label_IQ_普通文本_参考电平.ForeColor = System.Drawing.Color.Black;
-            this.label_IQ_普通文本_参考电平.Location = new System.Drawing.Point(2, 57);
-            this.label_IQ_普通文本_参考电平.Name = "label_IQ_普通文本_参考电平";
-            this.label_IQ_普通文本_参考电平.Size = new System.Drawing.Size(53, 12);
-            this.label_IQ_普通文本_参考电平.TabIndex = 73;
-            this.label_IQ_普通文本_参考电平.Text = "参考电平";
-            // 
-            // numericUpDown_IQ_参考电平
-            // 
-            this.numericUpDown_IQ_参考电平.BackColor = System.Drawing.Color.White;
-            this.numericUpDown_IQ_参考电平.DecimalPlaces = 3;
-            this.numericUpDown_IQ_参考电平.ForeColor = System.Drawing.Color.Black;
-            this.numericUpDown_IQ_参考电平.Location = new System.Drawing.Point(62, 54);
-            this.numericUpDown_IQ_参考电平.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.numericUpDown_IQ_参考电平.Minimum = new decimal(new int[] {
-            130,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown_IQ_参考电平.Name = "numericUpDown_IQ_参考电平";
-            this.numericUpDown_IQ_参考电平.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown_IQ_参考电平.TabIndex = 74;
-            this.numericUpDown_IQ_参考电平.ValueChanged += new System.EventHandler(this.numericUpDown_IQ_参考电平_ValueChanged);
-            // 
-            // label_IQ_普通文本_带宽单位
-            // 
-            this.label_IQ_普通文本_带宽单位.AutoSize = true;
-            this.label_IQ_普通文本_带宽单位.ForeColor = System.Drawing.Color.Black;
-            this.label_IQ_普通文本_带宽单位.Location = new System.Drawing.Point(185, 136);
-            this.label_IQ_普通文本_带宽单位.Name = "label_IQ_普通文本_带宽单位";
-            this.label_IQ_普通文本_带宽单位.Size = new System.Drawing.Size(23, 12);
-            this.label_IQ_普通文本_带宽单位.TabIndex = 83;
-            this.label_IQ_普通文本_带宽单位.Text = "MHz";
-            // 
-            // label_IQ_普通文本_参考电平单位
-            // 
-            this.label_IQ_普通文本_参考电平单位.AutoSize = true;
-            this.label_IQ_普通文本_参考电平单位.ForeColor = System.Drawing.Color.Black;
-            this.label_IQ_普通文本_参考电平单位.Location = new System.Drawing.Point(185, 57);
-            this.label_IQ_普通文本_参考电平单位.Name = "label_IQ_普通文本_参考电平单位";
-            this.label_IQ_普通文本_参考电平单位.Size = new System.Drawing.Size(23, 12);
-            this.label_IQ_普通文本_参考电平单位.TabIndex = 75;
-            this.label_IQ_普通文本_参考电平单位.Text = "dBm";
-            // 
-            // numericUpDown_IQ_带宽
-            // 
-            this.numericUpDown_IQ_带宽.BackColor = System.Drawing.Color.White;
-            this.numericUpDown_IQ_带宽.DecimalPlaces = 3;
-            this.numericUpDown_IQ_带宽.ForeColor = System.Drawing.Color.Black;
-            this.numericUpDown_IQ_带宽.Location = new System.Drawing.Point(62, 134);
-            this.numericUpDown_IQ_带宽.Maximum = new decimal(new int[] {
-            160,
-            0,
-            0,
-            0});
-            this.numericUpDown_IQ_带宽.Name = "numericUpDown_IQ_带宽";
-            this.numericUpDown_IQ_带宽.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown_IQ_带宽.TabIndex = 82;
-            this.numericUpDown_IQ_带宽.ValueChanged += new System.EventHandler(this.numericUpDown_IQ_带宽_ValueChanged);
-            // 
-            // label_IQ_普通文本_带宽
-            // 
-            this.label_IQ_普通文本_带宽.AutoSize = true;
-            this.label_IQ_普通文本_带宽.ForeColor = System.Drawing.Color.Black;
-            this.label_IQ_普通文本_带宽.Location = new System.Drawing.Point(3, 136);
-            this.label_IQ_普通文本_带宽.Name = "label_IQ_普通文本_带宽";
-            this.label_IQ_普通文本_带宽.Size = new System.Drawing.Size(53, 12);
-            this.label_IQ_普通文本_带宽.TabIndex = 81;
-            this.label_IQ_普通文本_带宽.Text = "带    宽";
-            // 
-            // label_IQ_普通文本_中心频率
-            // 
-            this.label_IQ_普通文本_中心频率.AutoSize = true;
-            this.label_IQ_普通文本_中心频率.ForeColor = System.Drawing.Color.Black;
-            this.label_IQ_普通文本_中心频率.Location = new System.Drawing.Point(2, 86);
-            this.label_IQ_普通文本_中心频率.Name = "label_IQ_普通文本_中心频率";
-            this.label_IQ_普通文本_中心频率.Size = new System.Drawing.Size(53, 12);
-            this.label_IQ_普通文本_中心频率.TabIndex = 76;
-            this.label_IQ_普通文本_中心频率.Text = "中心频率";
-            // 
-            // comboBox_IQ_中心频率单位
-            // 
-            this.comboBox_IQ_中心频率单位.AutoCompleteCustomSource.AddRange(new string[] {
-            "GHz",
-            "MHz",
-            "KHz",
-            "Hz"});
-            this.comboBox_IQ_中心频率单位.BackColor = System.Drawing.Color.White;
-            this.comboBox_IQ_中心频率单位.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_IQ_中心频率单位.ForeColor = System.Drawing.Color.Black;
-            this.comboBox_IQ_中心频率单位.FormattingEnabled = true;
-            this.comboBox_IQ_中心频率单位.Items.AddRange(new object[] {
-            "GHz",
-            "MHz",
-            "KHz",
-            "Hz"});
-            this.comboBox_IQ_中心频率单位.Location = new System.Drawing.Point(165, 83);
-            this.comboBox_IQ_中心频率单位.Name = "comboBox_IQ_中心频率单位";
-            this.comboBox_IQ_中心频率单位.Size = new System.Drawing.Size(43, 20);
-            this.comboBox_IQ_中心频率单位.TabIndex = 78;
-            this.comboBox_IQ_中心频率单位.SelectedIndexChanged += new System.EventHandler(this.comboBox_IQ_中心频率单位_SelectedIndexChanged);
-            // 
-            // numericUpDown_IQ_中心频率
-            // 
-            this.numericUpDown_IQ_中心频率.BackColor = System.Drawing.Color.White;
-            this.numericUpDown_IQ_中心频率.DecimalPlaces = 6;
-            this.numericUpDown_IQ_中心频率.ForeColor = System.Drawing.Color.Black;
-            this.numericUpDown_IQ_中心频率.Location = new System.Drawing.Point(62, 82);
-            this.numericUpDown_IQ_中心频率.Maximum = new decimal(new int[] {
-            1215752192,
-            23,
-            0,
-            0});
-            this.numericUpDown_IQ_中心频率.Name = "numericUpDown_IQ_中心频率";
-            this.numericUpDown_IQ_中心频率.Size = new System.Drawing.Size(98, 21);
-            this.numericUpDown_IQ_中心频率.TabIndex = 77;
-            this.numericUpDown_IQ_中心频率.ValueChanged += new System.EventHandler(this.numericUpDown_IQ_中心频率_ValueChanged);
-            // 
             // groupBox_主要设置
             // 
             this.groupBox_主要设置.BackColor = System.Drawing.Color.Transparent;
@@ -2111,27 +2337,6 @@
             this.button_音频处理_减1KHz.UseVisualStyleBackColor = true;
             this.button_音频处理_减1KHz.Visible = false;
             // 
-            // groupBox_实时扫频
-            // 
-            this.groupBox_实时扫频.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox_实时扫频.Controls.Add(this.panel_实扫);
-            this.groupBox_实时扫频.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox_实时扫频.Location = new System.Drawing.Point(0, 0);
-            this.groupBox_实时扫频.Name = "groupBox_实时扫频";
-            this.groupBox_实时扫频.Size = new System.Drawing.Size(235, 314);
-            this.groupBox_实时扫频.TabIndex = 1;
-            this.groupBox_实时扫频.TabStop = false;
-            this.groupBox_实时扫频.Text = "实时扫频";
-            // 
-            // panel_实扫
-            // 
-            this.panel_实扫.AutoScroll = true;
-            this.panel_实扫.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_实扫.Location = new System.Drawing.Point(3, 17);
-            this.panel_实扫.Name = "panel_实扫";
-            this.panel_实扫.Size = new System.Drawing.Size(229, 294);
-            this.panel_实扫.TabIndex = 0;
-            // 
             // label_临时数据按钮
             // 
             this.label_临时数据按钮.BackColor = System.Drawing.Color.Transparent;
@@ -2229,6 +2434,150 @@
             this.panel_设计显示.TabIndex = 4;
             this.panel_设计显示.Visible = false;
             // 
+            // groupBox_IQ_生成文件
+            // 
+            this.groupBox_IQ_生成文件.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox_IQ_生成文件.Controls.Add(this.label_iq记录_文本_文件大小);
+            this.groupBox_IQ_生成文件.Controls.Add(this.progressBar_iq记录);
+            this.groupBox_IQ_生成文件.Controls.Add(this.button_iq记录);
+            this.groupBox_IQ_生成文件.Controls.Add(this.label_iq记录_文本_记录大小单位);
+            this.groupBox_IQ_生成文件.Controls.Add(this.numericUpDown_iq记录);
+            this.groupBox_IQ_生成文件.Controls.Add(this.label_iq记录_文本_记录大小);
+            this.groupBox_IQ_生成文件.Controls.Add(this.textBox_iq记录_文件名);
+            this.groupBox_IQ_生成文件.Controls.Add(this.label_iq记录_文本_文件名);
+            this.groupBox_IQ_生成文件.Controls.Add(this.button_iq记录_路径选择);
+            this.groupBox_IQ_生成文件.Controls.Add(this.textBox_iq记录_保存路径);
+            this.groupBox_IQ_生成文件.Controls.Add(this.label_iq记录_文本_保存路径);
+            this.groupBox_IQ_生成文件.Location = new System.Drawing.Point(4, 211);
+            this.groupBox_IQ_生成文件.Name = "groupBox_IQ_生成文件";
+            this.groupBox_IQ_生成文件.Size = new System.Drawing.Size(206, 187);
+            this.groupBox_IQ_生成文件.TabIndex = 96;
+            this.groupBox_IQ_生成文件.TabStop = false;
+            this.groupBox_IQ_生成文件.Text = "记录";
+            // 
+            // label_iq记录_文本_保存路径
+            // 
+            this.label_iq记录_文本_保存路径.AutoSize = true;
+            this.label_iq记录_文本_保存路径.Location = new System.Drawing.Point(2, 17);
+            this.label_iq记录_文本_保存路径.Name = "label_iq记录_文本_保存路径";
+            this.label_iq记录_文本_保存路径.Size = new System.Drawing.Size(53, 12);
+            this.label_iq记录_文本_保存路径.TabIndex = 0;
+            this.label_iq记录_文本_保存路径.Text = "保存路径";
+            // 
+            // textBox_iq记录_保存路径
+            // 
+            this.textBox_iq记录_保存路径.Location = new System.Drawing.Point(57, 12);
+            this.textBox_iq记录_保存路径.Name = "textBox_iq记录_保存路径";
+            this.textBox_iq记录_保存路径.ReadOnly = true;
+            this.textBox_iq记录_保存路径.Size = new System.Drawing.Size(148, 21);
+            this.textBox_iq记录_保存路径.TabIndex = 1;
+            // 
+            // button_iq记录_路径选择
+            // 
+            this.button_iq记录_路径选择.Location = new System.Drawing.Point(57, 39);
+            this.button_iq记录_路径选择.Name = "button_iq记录_路径选择";
+            this.button_iq记录_路径选择.Size = new System.Drawing.Size(56, 23);
+            this.button_iq记录_路径选择.TabIndex = 2;
+            this.button_iq记录_路径选择.Text = "选择";
+            this.button_iq记录_路径选择.UseVisualStyleBackColor = true;
+            this.button_iq记录_路径选择.Click += new System.EventHandler(this.button_iq记录_路径选择_Click);
+            // 
+            // textBox_iq记录_文件名
+            // 
+            this.textBox_iq记录_文件名.Location = new System.Drawing.Point(57, 68);
+            this.textBox_iq记录_文件名.Name = "textBox_iq记录_文件名";
+            this.textBox_iq记录_文件名.Size = new System.Drawing.Size(148, 21);
+            this.textBox_iq记录_文件名.TabIndex = 4;
+            this.textBox_iq记录_文件名.Text = "IQD";
+            // 
+            // label_iq记录_文本_文件名
+            // 
+            this.label_iq记录_文本_文件名.AutoSize = true;
+            this.label_iq记录_文本_文件名.Location = new System.Drawing.Point(2, 73);
+            this.label_iq记录_文本_文件名.Name = "label_iq记录_文本_文件名";
+            this.label_iq记录_文本_文件名.Size = new System.Drawing.Size(53, 12);
+            this.label_iq记录_文本_文件名.TabIndex = 3;
+            this.label_iq记录_文本_文件名.Text = "文 件 名";
+            // 
+            // label_iq记录_文本_记录大小
+            // 
+            this.label_iq记录_文本_记录大小.AutoSize = true;
+            this.label_iq记录_文本_记录大小.Location = new System.Drawing.Point(3, 97);
+            this.label_iq记录_文本_记录大小.Name = "label_iq记录_文本_记录大小";
+            this.label_iq记录_文本_记录大小.Size = new System.Drawing.Size(53, 12);
+            this.label_iq记录_文本_记录大小.TabIndex = 5;
+            this.label_iq记录_文本_记录大小.Text = "记录大小";
+            // 
+            // numericUpDown_iq记录
+            // 
+            this.numericUpDown_iq记录.BackColor = System.Drawing.Color.White;
+            this.numericUpDown_iq记录.DecimalPlaces = 4;
+            this.numericUpDown_iq记录.ForeColor = System.Drawing.Color.Black;
+            this.numericUpDown_iq记录.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            196608});
+            this.numericUpDown_iq记录.Location = new System.Drawing.Point(57, 95);
+            this.numericUpDown_iq记录.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.numericUpDown_iq记录.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
+            this.numericUpDown_iq记录.Name = "numericUpDown_iq记录";
+            this.numericUpDown_iq记录.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown_iq记录.TabIndex = 97;
+            this.numericUpDown_iq记录.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label_iq记录_文本_记录大小单位
+            // 
+            this.label_iq记录_文本_记录大小单位.AutoSize = true;
+            this.label_iq记录_文本_记录大小单位.ForeColor = System.Drawing.Color.Black;
+            this.label_iq记录_文本_记录大小单位.Location = new System.Drawing.Point(179, 97);
+            this.label_iq记录_文本_记录大小单位.Name = "label_iq记录_文本_记录大小单位";
+            this.label_iq记录_文本_记录大小单位.Size = new System.Drawing.Size(17, 12);
+            this.label_iq记录_文本_记录大小单位.TabIndex = 98;
+            this.label_iq记录_文本_记录大小单位.Text = "ms";
+            // 
+            // button_iq记录
+            // 
+            this.button_iq记录.Location = new System.Drawing.Point(0, 122);
+            this.button_iq记录.Name = "button_iq记录";
+            this.button_iq记录.Size = new System.Drawing.Size(205, 23);
+            this.button_iq记录.TabIndex = 99;
+            this.button_iq记录.Text = "开始记录";
+            this.button_iq记录.UseVisualStyleBackColor = true;
+            // 
+            // progressBar_iq记录
+            // 
+            this.progressBar_iq记录.Location = new System.Drawing.Point(1, 147);
+            this.progressBar_iq记录.MarqueeAnimationSpeed = 10;
+            this.progressBar_iq记录.Maximum = 500;
+            this.progressBar_iq记录.Name = "progressBar_iq记录";
+            this.progressBar_iq记录.Size = new System.Drawing.Size(202, 10);
+            this.progressBar_iq记录.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar_iq记录.TabIndex = 100;
+            this.progressBar_iq记录.Value = 1;
+            this.progressBar_iq记录.Visible = false;
+            // 
+            // label_iq记录_文本_文件大小
+            // 
+            this.label_iq记录_文本_文件大小.AutoSize = true;
+            this.label_iq记录_文本_文件大小.Location = new System.Drawing.Point(3, 163);
+            this.label_iq记录_文本_文件大小.Name = "label_iq记录_文本_文件大小";
+            this.label_iq记录_文本_文件大小.Size = new System.Drawing.Size(59, 12);
+            this.label_iq记录_文本_文件大小.TabIndex = 101;
+            this.label_iq记录_文本_文件大小.Text = "文件大小:";
+            // 
             // SM200B
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2253,6 +2602,20 @@
             this.panel_下方信息栏.PerformLayout();
             this.panel_菜单.ResumeLayout(false);
             this.panel_MenuTable.ResumeLayout(false);
+            this.groupBox_实时扫频.ResumeLayout(false);
+            this.panel_实扫.ResumeLayout(false);
+            this.panel_实扫.PerformLayout();
+            this.panel_IQ回放界面.ResumeLayout(false);
+            this.panel_IQ回放界面.PerformLayout();
+            this.panel_IQ记录界面.ResumeLayout(false);
+            this.panel_IQ记录界面.PerformLayout();
+            this.groupBox_IQ采集.ResumeLayout(false);
+            this.panel_IQ.ResumeLayout(false);
+            this.panel_IQ.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IQ_采集大小)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IQ_参考电平)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IQ_带宽)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IQ_中心频率)).EndInit();
             this.groupBox_扫频.ResumeLayout(false);
             this.panel_扫频.ResumeLayout(false);
             this.panel_扫频.PerformLayout();
@@ -2268,13 +2631,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_设置_参考电平)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_扫频_VBW)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_扫频_RBW)).EndInit();
-            this.groupBox_IQ采集.ResumeLayout(false);
-            this.panel_IQ.ResumeLayout(false);
-            this.panel_IQ.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IQ_采集大小)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IQ_参考电平)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IQ_带宽)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_IQ_中心频率)).EndInit();
             this.groupBox_主要设置.ResumeLayout(false);
             this.panel_设置.ResumeLayout(false);
             this.panel_设置.PerformLayout();
@@ -2287,7 +2643,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_音频处理_去加重)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_音频处理_高通)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_音频处理_中心频率)).EndInit();
-            this.groupBox_实时扫频.ResumeLayout(false);
+            this.groupBox_IQ_生成文件.ResumeLayout(false);
+            this.groupBox_IQ_生成文件.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_iq记录)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2440,5 +2798,35 @@
         private System.Windows.Forms.Label label_音频处理_普通文本_带宽;
         private System.Windows.Forms.Label label_音频处理_普通文本_音频类型;
         private System.Windows.Forms.Label label_音频处理_普通文本_中心频率;
+        private System.Windows.Forms.Button button_IQ采集_回放界面按钮;
+        private System.Windows.Forms.Button button_IQ采集_记录界面按钮;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel_IQ回放界面;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label_IQ采集_时间间隔;
+        private System.Windows.Forms.Button button_IQ采集_回放文件选择;
+        private System.Windows.Forms.Panel panel_IQ记录界面;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox_IQ_生成文件;
+        private System.Windows.Forms.Label label_iq记录_文本_文件大小;
+        private System.Windows.Forms.ProgressBar progressBar_iq记录;
+        private System.Windows.Forms.Button button_iq记录;
+        private System.Windows.Forms.Label label_iq记录_文本_记录大小单位;
+        private System.Windows.Forms.NumericUpDown numericUpDown_iq记录;
+        private System.Windows.Forms.Label label_iq记录_文本_记录大小;
+        private System.Windows.Forms.TextBox textBox_iq记录_文件名;
+        private System.Windows.Forms.Label label_iq记录_文本_文件名;
+        private System.Windows.Forms.Button button_iq记录_路径选择;
+        private System.Windows.Forms.TextBox textBox_iq记录_保存路径;
+        private System.Windows.Forms.Label label_iq记录_文本_保存路径;
     }
 }

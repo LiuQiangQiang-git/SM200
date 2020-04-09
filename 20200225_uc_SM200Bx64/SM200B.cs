@@ -14,6 +14,7 @@ using System.Threading;
 using System.Runtime.InteropServices;
 using System.Collections;
 using System.Diagnostics;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SM200Bx64
 {
@@ -575,6 +576,7 @@ namespace SM200Bx64
             //IQ默认值
             try
             {
+                IQ_记录回放界面(true);
                 comboBox_IQ_衰减值.SelectedIndex = 0;
                 IQ_参考电平 = 0; numericUpDown_IQ_参考电平.Value =0;
                 comboBox_IQ_中心频率单位.SelectedIndex = 1;
@@ -705,7 +707,7 @@ namespace SM200Bx64
 
             }
 
-            if (GCClear_tempNum>GCClear_num)
+            if (GCClear_tempNum > GCClear_num)
             {
                 ClearMemory();
                 GCClear_tempNum = 0;
@@ -1527,6 +1529,12 @@ namespace SM200Bx64
         private bool IQ_TimerAutoGet = false;
         FFT fft = new FFT();
         double IQ_Y轴最小 = double.NaN, IQ_Y轴最大 = double.NaN;
+        //记录======
+        string 保存路径 = "";        
+
+
+        //==========
+
 
         //获取参数
         double iqSampleRate = 0, iqBandwidth = 0, avg_p = 0;
@@ -1679,6 +1687,37 @@ namespace SM200Bx64
             }
             IQ_Y轴标数值还原();
         }
+
+
+        //=================================记录==============================
+        private void button_iq记录_路径选择_Click(object sender, EventArgs e)
+        {
+     
+            
+            //commonopen ofd = new OpenFileDialog();
+            //ofd
+            //if (ofd.ShowDialog() ==DialogResult.OK) {
+
+            //    MessageBox.Show(ofd.FileName);
+            //}
+
+
+            //if (dialog.ShowDialog() == DialogResult.OK||dialog.ShowDialog() == DialogResult.Yes)
+            //{
+            //    string foldPath = dialog.SelectedPath;
+            //    DirectoryInfo theFolder = new DirectoryInfo(foldPath);
+
+            //    //theFolder 包含文件路径
+
+            //    FileInfo[] dirInfo = theFolder.GetFiles();
+            //    //遍历文件夹                
+            //    保存路径 = textBox_iq记录_保存路径.Text = foldPath;                
+            //}
+        }
+
+
+
+
         #endregion
 
         private SmStatus IQ_加载参数()
@@ -2025,7 +2064,34 @@ namespace SM200Bx64
 
         #endregion
 
-        #region 实扫
+        #region 回放
+        private void button_IQ采集_记录界面按钮_Click_1(object sender, EventArgs e)
+        {
+
+        }
+        bool 当前界面 = false;
+        /// <summary>
+        /// true为记录界面，false为回放界面
+        /// </summary>
+        /// <param name="v"></param>
+        private void IQ_记录回放界面(bool v)
+        {
+            if (当前界面 != v)
+            {
+                当前界面 = v;
+                panel_IQ记录界面.Visible = v;
+                panel_IQ回放界面.Visible = !v;
+            }
+        }
+        private void button_IQ采集_记录界面按钮_Click(object sender, EventArgs e)
+        {
+            IQ_记录回放界面(true);
+        }
+
+        private void button_IQ采集_回放界面按钮_Click(object sender, EventArgs e)
+        {
+            IQ_记录回放界面(false);
+        }
 
 
         #endregion
@@ -2155,10 +2221,14 @@ namespace SM200Bx64
             音频_带宽 = (double)numericUpDown_音频处理_带宽.Value * 1e3; 音频_参数变化 = true;
         }
 
+ 
+
         private void numericUpDown_音频处理_高通_ValueChanged(object sender, EventArgs e)
         {
             音频_高通 = (double)numericUpDown_音频处理_高通.Value; 音频_参数变化 = true;
         }
+
+
 
         private void numericUpDown_音频处理_低通_ValueChanged(object sender, EventArgs e)
         {
@@ -2172,6 +2242,9 @@ namespace SM200Bx64
 
 
         #endregion
+
+
+
         private void button_音频处理_停止_Click(object sender, EventArgs e)
         {
             停止任何活动();
@@ -2242,20 +2315,27 @@ namespace SM200Bx64
         private async Task 音频_获取结果(WaveOut waveOut)
         {
             try {
-                MineSM200B.方法_获取结果_音频(Isx64,Equipment_Num, audioData);
-                waveOut.Play(audioData);
-                if (chart1.IsHandleCreated)
+                if (MineSM200B.方法_获取结果_音频(Isx64, Equipment_Num, audioData)
+                > 0)
                 {
-                    chart1.Invoke(new 无参(() =>
+                    waveOut.Play(audioData);
+                    if (chart1.IsHandleCreated)
                     {
+                        chart1.Invoke(new 无参(() =>
+                        {
 
-                        chart1.ChartAreas[0].AxisY.Maximum = 1.5;
-                        chart1.ChartAreas[0].AxisY.Minimum = -1.5;
-                        chart1.ChartAreas[0].AxisX.Maximum = 1001;
-                        chart1.ChartAreas[0].AxisX.Minimum = 0;
-                        chart1.Series[0].Points.DataBindY(audioData);
+                            chart1.ChartAreas[0].AxisY.Maximum = 1.5;
+                            chart1.ChartAreas[0].AxisY.Minimum = -1.5;
+                            chart1.ChartAreas[0].AxisX.Maximum = 1001;
+                            chart1.ChartAreas[0].AxisX.Minimum = 0;
+                            chart1.Series[0].Points.DataBindY(audioData);
+                        }
+                        ));
                     }
-                    ));
+                }
+                else {
+                    音频_播放 = false; 停止任何活动();
+                    //提示：未连接
                 }
             } catch { throw new Exception("播放错误"); }
         }
@@ -2404,11 +2484,55 @@ namespace SM200Bx64
 
         #region 临时测试
 
+        private void button_IQ采集_生成文件_Click(object sender, EventArgs e)
+        {
+            test();
+        }
+        private void button_IQ采集_选择路径_Click(object sender, EventArgs e)
+        {
+            test2();
+        }
+
         private void test()
         {
+            Class.IQData iqd = new Class.IQData();
+            iqd.Attenuator = -1;
+            iqd.BandWidth = (int)20e6;
+            iqd.CaptureSize = 1e-3;
+            iqd.CenterF = 8.16e9;
+            iqd.IQResult_32f = new float[300000];
+            iqd.IQTime = (long)1e10;
+            iqd.RefLevel = -20;
+            iqd.SampleLoss = 0;
+            iqd.SampleRate = (int)250e6;
+            iqd.SampleRemaining = 0;
+            
+
+            using (FileStream fs = new FileStream("1.txt",FileMode.Create)) {
+                BinaryFormatter bf = new BinaryFormatter();
+                bf.Serialize(fs,iqd);
+            }
             //timer_chart控件使用.
         }
 
+
+        private void test2()
+        {
+            using (FileStream fs = new FileStream("1.txt", FileMode.Open)) {
+                BinaryFormatter bf = new BinaryFormatter();
+                Class.IQData iqd = bf.Deserialize(fs) as Class.IQData;
+                if (iqd != null) {
+                    MessageBox.Show(iqd.IQResult_32f.Length.ToString());
+
+                    if (iqd.IQResult_16s == null)
+                    {
+                        MessageBox.Show("暂无16型");
+                    }
+                }
+
+
+            }
+        }
         #endregion
     }
 

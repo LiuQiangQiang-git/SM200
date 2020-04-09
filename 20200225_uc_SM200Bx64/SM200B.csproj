@@ -83,7 +83,7 @@
     <Compile Include="Class\ScrollingTextControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Class\SM200_Json.cs" />
+    <Compile Include="Class\SM200_serialize.cs" />
     <Compile Include="Class\WaveOut.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
