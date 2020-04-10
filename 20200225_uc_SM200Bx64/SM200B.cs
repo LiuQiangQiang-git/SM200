@@ -15,6 +15,7 @@ using System.Runtime.InteropServices;
 using System.Collections;
 using System.Diagnostics;
 using System.Runtime.Serialization.Formatters.Binary;
+using SM200Bx64.Class;
 
 namespace SM200Bx64
 {
@@ -26,6 +27,7 @@ namespace SM200Bx64
             if (!DesignMode)
             {
                 InitializeComponent();
+
                 this.DoubleBuffered = true;//设置本窗体
                 this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint, true);
                 this.UpdateStyles();
@@ -1530,9 +1532,9 @@ namespace SM200Bx64
         FFT fft = new FFT();
         double IQ_Y轴最小 = double.NaN, IQ_Y轴最大 = double.NaN;
         //记录======
-        string 保存路径 = "";        
-
-
+        string IQ_保存路径 = "",IQ_文件前缀 = "IQD";
+        double IQ_记录时长_s = 1e-3;
+        bool IQ_正在记录 = false;
         //==========
 
 
@@ -1690,34 +1692,36 @@ namespace SM200Bx64
 
 
         //=================================记录==============================
-        private void button_iq记录_路径选择_Click(object sender, EventArgs e)
+        private  void button_iq记录_路径选择_Click(object sender, EventArgs e)
         {
-     
-            
-            //commonopen ofd = new OpenFileDialog();
-            //ofd
-            //if (ofd.ShowDialog() ==DialogResult.OK) {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                textBox_iq记录_保存路径.Invoke(new 无参(() =>
+                {
+                    IQ_保存路径 =  textBox_iq记录_保存路径.Text = fbd.SelectedPath;
+                }));
+            }
 
-            //    MessageBox.Show(ofd.FileName);
-            //}
-
-
-            //if (dialog.ShowDialog() == DialogResult.OK||dialog.ShowDialog() == DialogResult.Yes)
-            //{
-            //    string foldPath = dialog.SelectedPath;
-            //    DirectoryInfo theFolder = new DirectoryInfo(foldPath);
-
-            //    //theFolder 包含文件路径
-
-            //    FileInfo[] dirInfo = theFolder.GetFiles();
-            //    //遍历文件夹                
-            //    保存路径 = textBox_iq记录_保存路径.Text = foldPath;                
-            //}
+        }
+        private void textBox_iq记录_文件名_TextChanged(object sender, EventArgs e)
+        {
+            IQ_文件前缀 = textBox_iq记录_文件名.Text;
         }
 
-
-
-
+        private void numericUpDown_iq记录_ValueChanged(object sender, EventArgs e)
+        {
+            IQ_记录时长_s = (double)numericUpDown_iq记录.Value;
+        }
+        private void button_iq记录_Click(object sender, EventArgs e)
+        {
+            停止任何活动();
+            清空chart();
+            if (IQ_正在记录) {
+                IQ_取消记录();
+            }
+            else { IQ_记录文件(); }
+        }
         #endregion
 
         private SmStatus IQ_加载参数()
@@ -2062,6 +2066,40 @@ namespace SM200Bx64
             chart1.Series[0].Points.DataBindXY(tempX, temp);
         }
 
+        //======================================IQ记录文件==================
+
+        private void IQ_记录文件()
+        {
+            progressBar_iq记录.Visible = true;
+            if (IQ_采样率 == 250e6) {
+
+            }
+            else {
+                IQ_加载参数();
+                int iqRLen = 0;
+                int temp_i = 0;
+                float avg_P = 0;
+                temp_IQResult = MineSM200B.方法_获取结果_IQ_默认数据(Isx64, Equipment_Num, IQ_记录时长_s, ref iqSampleRate, ref iqBandwidth
+                    , ref iqTimeStamp, ref sampleLoss, ref samplesRemaining);
+                float[] temp_iqR = (float[])(temp_IQResult[0]);
+                iqRLen = temp_iqR.Length / 2;
+                GetIQLen = iqRLen;
+                IQData iqd = new IQData(); iqd.Attenuator = IQ_衰减; iqd.BandWidth = (int)iqBandwidth;
+                iqd.CaptureSize = IQ_记录时长_s; iqd.CenterF = IQ_中心频率; iqd.IQResult_32f = temp_iqR;
+                iqd.IQTime = iqTimeStamp; iqd.RefLevel = IQ_参考电平; iqd.SampleLoss = sampleLoss; iqd.SampleRate = iqSampleRate;
+                iqd.SampleRemaining = samplesRemaining;
+                using (FileStream fs = new FileStream(IQ_保存路径 + "//" + IQ_文件前缀 + DateTime.Now.ToString("_YYYYMMddHHmmss") + ".SMD", FileMode.Create))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    bf.Serialize(fs, iqd);
+                }
+            }
+        }
+
+        private void IQ_取消记录() { 
+        
+        }
+
         #endregion
 
         #region 回放
@@ -2235,6 +2273,9 @@ namespace SM200Bx64
             音频_低通 = (double)numericUpDown_音频处理_低通.Value * 1e3; 音频_参数变化 = true;
 
         }
+
+
+
         private void numericUpDown_音频处理_去加重_ValueChanged(object sender, EventArgs e)
         {
             音频_去加重 = (double)numericUpDown_音频处理_去加重.Value; 音频_参数变化 = true;
@@ -2242,6 +2283,8 @@ namespace SM200Bx64
 
 
         #endregion
+
+
 
 
 

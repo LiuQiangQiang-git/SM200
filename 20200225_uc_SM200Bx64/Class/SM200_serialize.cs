@@ -45,7 +45,7 @@ namespace SM200Bx64.Class
         /// <summary>
         /// 采样率,单位Sa/s
         /// </summary>
-        public int SampleRate;
+        public double SampleRate;
 
         /// <summary>
         /// 带宽,单位Hz
