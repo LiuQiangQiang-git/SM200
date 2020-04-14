@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel_显示区 = new System.Windows.Forms.Panel();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -208,6 +208,7 @@
             this.timer_信息查询及连接检测 = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel_设计显示 = new System.Windows.Forms.Panel();
+            this.scrollingText_消息提示 = new SM200Bx64.ScrollingText();
             this.panel_显示区.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -267,58 +268,58 @@
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.AxisX.ArrowStyle = System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle.Triangle;
-            chartArea2.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Gainsboro;
-            chartArea2.AxisX.LabelStyle.Format = "N2";
-            chartArea2.AxisX.LabelStyle.Interval = 0D;
-            chartArea2.AxisX.LabelStyle.IntervalOffset = 0D;
-            chartArea2.AxisX.LabelStyle.TruncatedLabels = true;
-            chartArea2.AxisX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.DimGray;
-            chartArea2.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisX.MajorTickMark.Enabled = false;
-            chartArea2.AxisX.MaximumAutoSize = 70F;
-            chartArea2.AxisX.MinorTickMark.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea2.AxisX.ScaleBreakStyle.BreakLineStyle = System.Windows.Forms.DataVisualization.Charting.BreakLineStyle.Straight;
-            chartArea2.AxisX.ScaleBreakStyle.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea2.AxisX.ScaleBreakStyle.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisX2.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea2.AxisX2.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisY.LabelStyle.ForeColor = System.Drawing.Color.Gainsboro;
-            chartArea2.AxisY.LabelStyle.Format = "N1";
-            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.DimGray;
-            chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisY.MajorTickMark.Enabled = false;
-            chartArea2.AxisY.MajorTickMark.LineColor = System.Drawing.Color.Firebrick;
-            chartArea2.AxisY.MinorGrid.LineColor = System.Drawing.Color.DimGray;
-            chartArea2.AxisY.MinorTickMark.LineColor = System.Drawing.Color.DimGray;
-            chartArea2.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.CursorX.Interval = 0.1D;
-            chartArea2.CursorX.IsUserSelectionEnabled = true;
-            chartArea2.CursorX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.CursorX.SelectionColor = System.Drawing.Color.LightBlue;
-            chartArea2.CursorY.Interval = 0.01D;
-            chartArea2.CursorY.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.CursorY.SelectionColor = System.Drawing.Color.LightBlue;
-            chartArea2.Name = "ChartArea1";
-            chartArea2.Position.Auto = false;
-            chartArea2.Position.Height = 100F;
-            chartArea2.Position.Width = 94F;
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea1.AxisX.ArrowStyle = System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle.Triangle;
+            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisX.LabelStyle.Format = "N2";
+            chartArea1.AxisX.LabelStyle.Interval = 0D;
+            chartArea1.AxisX.LabelStyle.IntervalOffset = 0D;
+            chartArea1.AxisX.LabelStyle.TruncatedLabels = true;
+            chartArea1.AxisX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisX.MajorTickMark.Enabled = false;
+            chartArea1.AxisX.MaximumAutoSize = 70F;
+            chartArea1.AxisX.MinorTickMark.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisX.ScaleBreakStyle.BreakLineStyle = System.Windows.Forms.DataVisualization.Charting.BreakLineStyle.Straight;
+            chartArea1.AxisX.ScaleBreakStyle.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisX.ScaleBreakStyle.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisX2.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisX2.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisY.LabelStyle.Format = "N1";
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisY.MajorTickMark.Enabled = false;
+            chartArea1.AxisY.MajorTickMark.LineColor = System.Drawing.Color.Firebrick;
+            chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.AxisY.MinorTickMark.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.BackColor = System.Drawing.Color.Transparent;
+            chartArea1.CursorX.Interval = 0.1D;
+            chartArea1.CursorX.IsUserSelectionEnabled = true;
+            chartArea1.CursorX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.CursorX.SelectionColor = System.Drawing.Color.LightBlue;
+            chartArea1.CursorY.Interval = 0.01D;
+            chartArea1.CursorY.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.CursorY.SelectionColor = System.Drawing.Color.LightBlue;
+            chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 100F;
+            chartArea1.Position.Width = 94F;
+            this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.ContextMenuStrip = this.contextMenuStrip1;
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend2.Enabled = false;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(0, 23);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(616, 347);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "选择文件";
@@ -482,6 +483,7 @@
             this.panel_MenuTable.Controls.Add(this.groupBox_扫频);
             this.panel_MenuTable.Controls.Add(this.groupBox_主要设置);
             this.panel_MenuTable.Controls.Add(this.groupBox_临时显示点);
+            this.panel_MenuTable.Controls.Add(this.scrollingText_消息提示);
             this.panel_MenuTable.Location = new System.Drawing.Point(29, 3);
             this.panel_MenuTable.Name = "panel_MenuTable";
             this.panel_MenuTable.Size = new System.Drawing.Size(235, 314);
@@ -492,9 +494,9 @@
             this.groupBox_IQ采集.BackColor = System.Drawing.Color.Transparent;
             this.groupBox_IQ采集.Controls.Add(this.panel_IQ);
             this.groupBox_IQ采集.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox_IQ采集.Location = new System.Drawing.Point(0, 0);
+            this.groupBox_IQ采集.Location = new System.Drawing.Point(0, 18);
             this.groupBox_IQ采集.Name = "groupBox_IQ采集";
-            this.groupBox_IQ采集.Size = new System.Drawing.Size(235, 314);
+            this.groupBox_IQ采集.Size = new System.Drawing.Size(235, 296);
             this.groupBox_IQ采集.TabIndex = 2;
             this.groupBox_IQ采集.TabStop = false;
             this.groupBox_IQ采集.Text = "IQ采集";
@@ -528,12 +530,12 @@
             this.panel_IQ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_IQ.Location = new System.Drawing.Point(3, 17);
             this.panel_IQ.Name = "panel_IQ";
-            this.panel_IQ.Size = new System.Drawing.Size(229, 294);
+            this.panel_IQ.Size = new System.Drawing.Size(229, 276);
             this.panel_IQ.TabIndex = 90;
             // 
             // groupBox_IQ_生成文件
             // 
-            this.groupBox_IQ_生成文件.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox_IQ_生成文件.BackColor = System.Drawing.Color.Transparent;
             this.groupBox_IQ_生成文件.Controls.Add(this.label_iq记录_文本_文件大小);
             this.groupBox_IQ_生成文件.Controls.Add(this.progressBar_iq记录);
             this.groupBox_IQ_生成文件.Controls.Add(this.button_iq记录);
@@ -547,7 +549,7 @@
             this.groupBox_IQ_生成文件.Controls.Add(this.label_iq记录_文本_保存路径);
             this.groupBox_IQ_生成文件.Location = new System.Drawing.Point(4, 211);
             this.groupBox_IQ_生成文件.Name = "groupBox_IQ_生成文件";
-            this.groupBox_IQ_生成文件.Size = new System.Drawing.Size(206, 187);
+            this.groupBox_IQ_生成文件.Size = new System.Drawing.Size(206, 180);
             this.groupBox_IQ_生成文件.TabIndex = 96;
             this.groupBox_IQ_生成文件.TabStop = false;
             this.groupBox_IQ_生成文件.Text = "记录";
@@ -555,7 +557,7 @@
             // label_iq记录_文本_文件大小
             // 
             this.label_iq记录_文本_文件大小.AutoSize = true;
-            this.label_iq记录_文本_文件大小.Location = new System.Drawing.Point(3, 163);
+            this.label_iq记录_文本_文件大小.Location = new System.Drawing.Point(3, 161);
             this.label_iq记录_文本_文件大小.Name = "label_iq记录_文本_文件大小";
             this.label_iq记录_文本_文件大小.Size = new System.Drawing.Size(59, 12);
             this.label_iq记录_文本_文件大小.TabIndex = 101;
@@ -618,7 +620,7 @@
             this.numericUpDown_iq记录.Size = new System.Drawing.Size(120, 21);
             this.numericUpDown_iq记录.TabIndex = 97;
             this.numericUpDown_iq记录.Value = new decimal(new int[] {
-            1,
+            1000,
             0,
             0,
             0});
@@ -993,9 +995,9 @@
             this.groupBox_实时扫频.BackColor = System.Drawing.Color.Transparent;
             this.groupBox_实时扫频.Controls.Add(this.panel_实扫);
             this.groupBox_实时扫频.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox_实时扫频.Location = new System.Drawing.Point(0, 0);
+            this.groupBox_实时扫频.Location = new System.Drawing.Point(0, 18);
             this.groupBox_实时扫频.Name = "groupBox_实时扫频";
-            this.groupBox_实时扫频.Size = new System.Drawing.Size(235, 314);
+            this.groupBox_实时扫频.Size = new System.Drawing.Size(235, 296);
             this.groupBox_实时扫频.TabIndex = 1;
             this.groupBox_实时扫频.TabStop = false;
             this.groupBox_实时扫频.Text = "回放";
@@ -1006,12 +1008,13 @@
             this.panel_实扫.Controls.Add(this.button_IQ采集_回放界面按钮);
             this.panel_实扫.Controls.Add(this.button_IQ采集_记录界面按钮);
             this.panel_实扫.Controls.Add(this.label1);
-            this.panel_实扫.Controls.Add(this.panel_IQ回放界面);
             this.panel_实扫.Controls.Add(this.panel_IQ记录界面);
+            this.panel_实扫.Controls.Add(this.panel_IQ回放界面);
+            this.panel_实扫.Controls.Add(this.button_IQ采集_回放文件选择);
             this.panel_实扫.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_实扫.Location = new System.Drawing.Point(3, 17);
             this.panel_实扫.Name = "panel_实扫";
-            this.panel_实扫.Size = new System.Drawing.Size(229, 294);
+            this.panel_实扫.Size = new System.Drawing.Size(229, 276);
             this.panel_实扫.TabIndex = 0;
             // 
             // button_IQ采集_回放界面按钮
@@ -1050,8 +1053,7 @@
             this.panel_IQ回放界面.Controls.Add(this.button6);
             this.panel_IQ回放界面.Controls.Add(this.button7);
             this.panel_IQ回放界面.Controls.Add(this.label_IQ采集_时间间隔);
-            this.panel_IQ回放界面.Controls.Add(this.button_IQ采集_回放文件选择);
-            this.panel_IQ回放界面.Location = new System.Drawing.Point(4, 31);
+            this.panel_IQ回放界面.Location = new System.Drawing.Point(11, 60);
             this.panel_IQ回放界面.Name = "panel_IQ回放界面";
             this.panel_IQ回放界面.Size = new System.Drawing.Size(199, 129);
             this.panel_IQ回放界面.TabIndex = 7;
@@ -1108,12 +1110,13 @@
             // 
             // button_IQ采集_回放文件选择
             // 
-            this.button_IQ采集_回放文件选择.Location = new System.Drawing.Point(1, 5);
+            this.button_IQ采集_回放文件选择.Location = new System.Drawing.Point(7, 32);
             this.button_IQ采集_回放文件选择.Name = "button_IQ采集_回放文件选择";
             this.button_IQ采集_回放文件选择.Size = new System.Drawing.Size(195, 23);
             this.button_IQ采集_回放文件选择.TabIndex = 0;
             this.button_IQ采集_回放文件选择.Text = "选择文件";
             this.button_IQ采集_回放文件选择.UseVisualStyleBackColor = true;
+            this.button_IQ采集_回放文件选择.Click += new System.EventHandler(this.button_IQ采集_回放文件选择_Click);
             // 
             // panel_IQ记录界面
             // 
@@ -1123,7 +1126,7 @@
             this.panel_IQ记录界面.Controls.Add(this.button3);
             this.panel_IQ记录界面.Controls.Add(this.button2);
             this.panel_IQ记录界面.Controls.Add(this.button1);
-            this.panel_IQ记录界面.Location = new System.Drawing.Point(4, 31);
+            this.panel_IQ记录界面.Location = new System.Drawing.Point(10, 185);
             this.panel_IQ记录界面.Name = "panel_IQ记录界面";
             this.panel_IQ记录界面.Size = new System.Drawing.Size(199, 129);
             this.panel_IQ记录界面.TabIndex = 6;
@@ -1177,15 +1180,16 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "选择文件";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox_扫频
             // 
             this.groupBox_扫频.BackColor = System.Drawing.Color.Transparent;
             this.groupBox_扫频.Controls.Add(this.panel_扫频);
             this.groupBox_扫频.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox_扫频.Location = new System.Drawing.Point(0, 0);
+            this.groupBox_扫频.Location = new System.Drawing.Point(0, 18);
             this.groupBox_扫频.Name = "groupBox_扫频";
-            this.groupBox_扫频.Size = new System.Drawing.Size(235, 314);
+            this.groupBox_扫频.Size = new System.Drawing.Size(235, 296);
             this.groupBox_扫频.TabIndex = 2;
             this.groupBox_扫频.TabStop = false;
             this.groupBox_扫频.Text = "扫频";
@@ -1228,7 +1232,7 @@
             this.panel_扫频.ForeColor = System.Drawing.Color.Black;
             this.panel_扫频.Location = new System.Drawing.Point(3, 17);
             this.panel_扫频.Name = "panel_扫频";
-            this.panel_扫频.Size = new System.Drawing.Size(229, 294);
+            this.panel_扫频.Size = new System.Drawing.Size(229, 276);
             this.panel_扫频.TabIndex = 0;
             // 
             // button_扫频停止
@@ -1957,9 +1961,9 @@
             this.groupBox_主要设置.BackColor = System.Drawing.Color.Transparent;
             this.groupBox_主要设置.Controls.Add(this.panel_设置);
             this.groupBox_主要设置.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox_主要设置.Location = new System.Drawing.Point(0, 0);
+            this.groupBox_主要设置.Location = new System.Drawing.Point(0, 18);
             this.groupBox_主要设置.Name = "groupBox_主要设置";
-            this.groupBox_主要设置.Size = new System.Drawing.Size(235, 314);
+            this.groupBox_主要设置.Size = new System.Drawing.Size(235, 296);
             this.groupBox_主要设置.TabIndex = 2;
             this.groupBox_主要设置.TabStop = false;
             this.groupBox_主要设置.Text = "主要设置";
@@ -1984,7 +1988,7 @@
             this.panel_设置.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_设置.Location = new System.Drawing.Point(3, 17);
             this.panel_设置.Name = "panel_设置";
-            this.panel_设置.Size = new System.Drawing.Size(229, 294);
+            this.panel_设置.Size = new System.Drawing.Size(229, 276);
             this.panel_设置.TabIndex = 2;
             // 
             // numericUpDown2
@@ -2125,9 +2129,9 @@
             this.groupBox_临时显示点.BackColor = System.Drawing.Color.Transparent;
             this.groupBox_临时显示点.Controls.Add(this.panel_音频处理);
             this.groupBox_临时显示点.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox_临时显示点.Location = new System.Drawing.Point(0, 0);
+            this.groupBox_临时显示点.Location = new System.Drawing.Point(0, 18);
             this.groupBox_临时显示点.Name = "groupBox_临时显示点";
-            this.groupBox_临时显示点.Size = new System.Drawing.Size(235, 314);
+            this.groupBox_临时显示点.Size = new System.Drawing.Size(235, 296);
             this.groupBox_临时显示点.TabIndex = 0;
             this.groupBox_临时显示点.TabStop = false;
             this.groupBox_临时显示点.Text = "音频处理";
@@ -2162,7 +2166,7 @@
             this.panel_音频处理.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_音频处理.Location = new System.Drawing.Point(3, 17);
             this.panel_音频处理.Name = "panel_音频处理";
-            this.panel_音频处理.Size = new System.Drawing.Size(229, 294);
+            this.panel_音频处理.Size = new System.Drawing.Size(229, 276);
             this.panel_音频处理.TabIndex = 91;
             // 
             // numericUpDown_音频处理_带宽
@@ -2581,6 +2585,25 @@
             this.panel_设计显示.TabIndex = 4;
             this.panel_设计显示.Visible = false;
             // 
+            // scrollingText_消息提示
+            // 
+            this.scrollingText_消息提示.BackgroundBrush = null;
+            this.scrollingText_消息提示.BorderColor = System.Drawing.Color.Black;
+            this.scrollingText_消息提示.Dock = System.Windows.Forms.DockStyle.Top;
+            this.scrollingText_消息提示.ForegroundBrush = null;
+            this.scrollingText_消息提示.Location = new System.Drawing.Point(0, 0);
+            this.scrollingText_消息提示.Name = "scrollingText_消息提示";
+            this.scrollingText_消息提示.ScrollDirection = SM200Bx64.ScrollDirection.RightToLeft;
+            this.scrollingText_消息提示.ScrollText = "显示消息提示";
+            this.scrollingText_消息提示.ShowBorder = true;
+            this.scrollingText_消息提示.Size = new System.Drawing.Size(235, 18);
+            this.scrollingText_消息提示.StopScrollOnMouseOver = false;
+            this.scrollingText_消息提示.TabIndex = 91;
+            this.scrollingText_消息提示.Text = "scrollingText1";
+            this.scrollingText_消息提示.TextScrollDistance = 2;
+            this.scrollingText_消息提示.TextScrollSpeed = 25;
+            this.scrollingText_消息提示.VerticleTextPosition = SM200Bx64.VerticleTextPosition.Center;
+            // 
             // SM200B
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2831,5 +2854,6 @@
         private System.Windows.Forms.Button button_iq记录_路径选择;
         private System.Windows.Forms.TextBox textBox_iq记录_保存路径;
         private System.Windows.Forms.Label label_iq记录_文本_保存路径;
+        private ScrollingText scrollingText_消息提示;
     }
 }

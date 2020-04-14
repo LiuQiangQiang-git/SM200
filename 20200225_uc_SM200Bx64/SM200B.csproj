@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\complex.cs" />
+    <Compile Include="Class\FolderSelectDialog.cs" />
     <Compile Include="Class\MineSM200API.cs" />
     <Compile Include="Class\MineSM200B.cs" />
     <Compile Include="Class\PeakMeter.cs">

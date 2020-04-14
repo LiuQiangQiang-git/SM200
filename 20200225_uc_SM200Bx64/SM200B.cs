@@ -16,6 +16,7 @@ using System.Collections;
 using System.Diagnostics;
 using System.Runtime.Serialization.Formatters.Binary;
 using SM200Bx64.Class;
+using System.Timers;
 
 namespace SM200Bx64
 {
@@ -35,7 +36,7 @@ namespace SM200Bx64
             else {
                 设计模式显示();
             }
-        }   
+        }
 
         #region 控件事件响应
         private void SM200B_Load(object sender, EventArgs e)
@@ -72,7 +73,7 @@ namespace SM200Bx64
                 }
             })
             { IsBackground = true }.Start();
-            
+
         }
         private void 还原比例ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -141,7 +142,7 @@ namespace SM200Bx64
                 if (temp_control.IsHandleCreated)
                 {
                     temp_control.BeginInvoke(new 无参(async () => {
-                        while (true){
+                        while (true) {
                             newValue = temp_control.Width + temp_MoveStep;
                             if (newValue > temp_destSize.Width)
                             {
@@ -164,7 +165,7 @@ namespace SM200Bx64
             })
             { IsBackground = true }.Start();
         }
-               
+
         bool 菜单是否显示 = false;
         private async Task 菜单显示()
         {
@@ -175,7 +176,7 @@ namespace SM200Bx64
                 temp_control = panel_菜单;
                 await temp_showMenuFlash();
             }
-            else{
+            else {
                 toolTip1.SetToolTip(label_显示菜单按钮, "显示菜单");
                 new Thread(() => {
                     if (panel_菜单.IsHandleCreated) {
@@ -183,7 +184,7 @@ namespace SM200Bx64
                             panel_菜单.Size = new Size(菜单最小显示宽度, this.Height);
                             panel_菜单.Location = new Point(this.Width - panel_菜单.Width, 0);
                         }));
-                    }}){ IsBackground = true }.Start();
+                    } }) { IsBackground = true }.Start();
             }
             菜单是否显示 = !菜单是否显示;
         }
@@ -208,7 +209,7 @@ namespace SM200Bx64
                         panel_菜单.Location = new Point(this.Width - panel_菜单.Width, 0);
                     }));
                 }
-                if(panel_MenuTable.IsHandleCreated){
+                if (panel_MenuTable.IsHandleCreated) {
                     panel_MenuTable.BeginInvoke(new 无参(() => {
                         panel_MenuTable.Size = new Size(菜单固定宽度 - 菜单最小显示宽度, panel_菜单.Height);
 
@@ -224,14 +225,14 @@ namespace SM200Bx64
             new Thread(() => {
                 if (label_显示区_左上信息显示.IsHandleCreated)
                 {
-                    label_显示区_左上信息显示.BeginInvoke(new 无参(()=> {
+                    label_显示区_左上信息显示.BeginInvoke(new 无参(() => {
                         try
                         {
                             label_显示区_左上信息显示.Parent = chart1;
-                            label_显示区_左上信息显示.Location = new Point((int)(chart1.Width/11.622), (int)(chart1.Height/49.571));
+                            label_显示区_左上信息显示.Location = new Point((int)(chart1.Width / 11.622), (int)(chart1.Height / 49.571));
                         }
                         catch { }
-                    }));                   
+                    }));
                 }
             })
             { IsBackground = true }.Start();
@@ -259,7 +260,7 @@ namespace SM200Bx64
         private void label2_Click(object sender, EventArgs e)
         {
             显示界面(界面类型.扫频相关);
-   
+
         }
         private void label3_Click(object sender, EventArgs e)
         {
@@ -271,7 +272,7 @@ namespace SM200Bx64
         }
         界面类型 界面当前类型 = 界面类型.临时数据显示;
         private void 显示界面(界面类型 temp_j) {
-            if(界面当前类型 != temp_j)
+            if (界面当前类型 != temp_j)
             {
                 groupBox_IQ采集.Visible = groupBox_实时扫频.Visible =
                groupBox_主要设置.Visible = groupBox_扫频.Visible =
@@ -376,7 +377,7 @@ namespace SM200Bx64
             else
             {
                 label_主界面按钮.Image = Properties.Resources.按钮_设备信息_00;
-            }          
+            }
         }
 
 
@@ -507,16 +508,84 @@ namespace SM200Bx64
         #endregion
 
         #region 信息显示
-        //public void 方法_提示信息显示(string s) {
-        //    scrollingText1.ScrollText = s;
-        //}
+        String Message_DefaultString = "暂无消息提示";
+        ArrayList Message_ArrayList = new ArrayList();
+        System.Timers.Timer Message_Timer = new System.Timers.Timer(1000);
+        private void showMessage(int MessageLeve, string MessageString) {
+            MessageFormat mf = new MessageFormat(MessageString, MessageLeve);
+            if (Message_ArrayList.Count > 10)
+            {
+                int temp = Message_ArrayList.Count - 10;
+                for (int i = 0; i<temp;i++) {
+                    try { Message_ArrayList.RemoveAt(9 + i); } catch { }
+                }
+                Message_ArrayList.Add(mf);
+            }
+            else {
+                for (int i = 0; i < Message_ArrayList.Count; i++)
+                {
+                    if (MessageLeve > ((MessageFormat)Message_ArrayList[i]).Num)
+                    {
+                        Message_ArrayList.Insert(i, mf);
+                        break;
+                    }
+                    else
+                    {
+                        ((MessageFormat)Message_ArrayList[i]).Num--;
+                    }
+                }
+            }
+        }
+
+        private class MessageFormat {
+            public MessageFormat() { }
+            public MessageFormat(string s,int i) {
+                Content = s;
+                Num = i;
+            }
+            public string Content;
+            public int Num;
+        }
+        private void MessageTimerTicked(object sender, ElapsedEventArgs e)
+        {
+            temp_flag:
+            if (Message_ArrayList.Count<1) {
+                MessageFormat mf = new MessageFormat(Message_DefaultString,1);
+                Message_ArrayList.Add(mf);
+            }
+            else
+            {
+                for (int i = 0;i<Message_ArrayList.Count;i++) {
+                    if (((MessageFormat)Message_ArrayList[i]).Num < 0) {
+                        Message_ArrayList.RemoveAt(i);
+                        if (Message_ArrayList.Count<1) {
+                            goto temp_flag;
+                        }
+                    }
+                    else {
+                        ((MessageFormat)Message_ArrayList[i]).Num -= 1;
+                    }
+                }
+            }
+            
+
+            if (scrollingText_消息提示.IsHandleCreated) {
+                scrollingText_消息提示.Invoke(new 无参(()=> {
+                    try {
+                        scrollingText_消息提示.ScrollText = ((MessageFormat)Message_ArrayList[0]).Content;
+                    } catch { scrollingText_消息提示.ScrollText = "(0x00)消息提示解析问题"; }
+                }));
+            }
+        }
+
         #endregion
 
         //目前没有输入值判断\带宽计算检测\chart上下边界值\轴单位,记得改==========================================================
 
+        #region 界面相关参数
         bool Isx64 = true;
 
-        private int Equipment_Num= -1;
+        private int Equipment_Num = -1;
         int chart_固定长度 = 2000;
         const int GCClear_num = 5;
         int GCClear_tempNum = 0;
@@ -527,15 +596,17 @@ namespace SM200Bx64
         {
             停止任何活动();
             清空chart();
-            MineSM200B.方法_状态操作_断开设备(Isx64,Equipment_Num);
+            MineSM200B.方法_状态操作_断开设备(Isx64, Equipment_Num);
             连接状态 = false;
-            button_设置_手动连接.Invoke(new 无参(()=> {button_设置_手动连接.Text = "连接";}));
+            button_设置_手动连接.Invoke(new 无参(() => { button_设置_手动连接.Text = "连接"; }));
+            showMessage(2,"中断设备连接");
         }
         public void 方法_设为空闲()
         {
-            MineSM200B.方法_状态操作_置为空闲(Isx64,Equipment_Num);
+            MineSM200B.方法_状态操作_置为空闲(Isx64, Equipment_Num);
+            showMessage(2, "设备置为空闲");
         }
-        
+
 
         private void 默认值加载及初始化()
         {
@@ -556,8 +627,9 @@ namespace SM200Bx64
             //===============
             ForAutoLink = new Thread(link_equipment);
             //扫频值默认
-            try {
-                comboBox_扫频_衰减值.SelectedIndex = 0;扫频_参考电平 = -20; numericUpDown_设置_参考电平.Value = -20;
+            try
+            {
+                comboBox_扫频_衰减值.SelectedIndex = 0; 扫频_参考电平 = -20; numericUpDown_设置_参考电平.Value = -20;
                 comboBox_扫频_中心频率单位.SelectedIndex = 1;
                 comboBox_扫频_扫频宽度单位.SelectedIndex = 1;
                 扫频_中心频率 = 8160000; numericUpDown_扫频_中心频率.Value = 8160;
@@ -574,31 +646,39 @@ namespace SM200Bx64
                 comboBox_扫频_RBW单位.SelectedIndex = 2;
                 comboBox_扫频_VBW单位.SelectedIndex = 2;
                 扫频_频率设置_界面切换(true);
-            } catch { }
+            }
+            catch { showMessage(5, "(0x01)设备扫频界面配置失败"); }
             //IQ默认值
             try
             {
                 IQ_记录回放界面(true);
                 comboBox_IQ_衰减值.SelectedIndex = 0;
-                IQ_参考电平 = 0; numericUpDown_IQ_参考电平.Value =0;
+                IQ_参考电平 = 0; numericUpDown_IQ_参考电平.Value = 0;
                 comboBox_IQ_中心频率单位.SelectedIndex = 1;
                 comboBox_IQ_中心频率单位.SelectedIndex = 1;
                 numericUpDown_IQ_中心频率.Value = 8160;
                 comboBox_IQ_采样率.SelectedIndex = 1;
                 numericUpDown_IQ_带宽.Value = 41.5M;
                 comboBox_IQ_触发沿.SelectedIndex = 0;
-
+                IQ_保存路径 = textBox_iq记录_保存路径.Text = Application.StartupPath.ToString();
             }
-            catch { }
+            catch { showMessage(5, "(0x02)设备IQ界面配置失败"); }
             //音频默认
-            try {
+            try
+            {
                 comboBox_音频处理_中心频率单位.SelectedIndex = 1;
                 numericUpDown_音频处理_中心频率.Value = (decimal)101.7;
                 comboBox_音频处理_音频类型.SelectedIndex = 1;
-            } catch { }
+            }
+            catch { showMessage(5, "(0x03)设备音频处理界面配置失败"); }
 
-
-
+            //信息加载
+            try {
+                Message_Timer.Elapsed += new System.Timers.ElapsedEventHandler(MessageTimerTicked);
+                Message_Timer.AutoReset = true;
+                Message_Timer.Enabled = true;
+            }
+            catch { showMessage(5, "(0x04)消息提示计时器加载失败"); }
             //==
             //== 临时 ==
             //await Task.Run(new Action(() => {
@@ -606,7 +686,8 @@ namespace SM200Bx64
             //}));
         }
 
-        private void 停止任何活动() {
+        private void 停止任何活动()
+        {
             停止扫描();
             停止IQ();
             停止音频播放();
@@ -615,7 +696,8 @@ namespace SM200Bx64
             Y轴单位 = "";
             清空chart();
         }
-        private void 清空chart() {
+        private void 清空chart()
+        {
             if (chart1.IsHandleCreated)
             {
                 chart1.Invoke(new 无参(() => {
@@ -623,6 +705,8 @@ namespace SM200Bx64
                 }));
             }
         }
+
+        #endregion
 
         #region 主要设置
         Thread ForAutoLink;
@@ -646,18 +730,23 @@ namespace SM200Bx64
         private void checkBox_设置_自动连接_CheckedChanged(object sender, EventArgs e)
         {
             自动连接 = checkBox_设置_自动连接.Checked;
+            if (自动连接) {
+                showMessage(4,"用户启用自动连接");
+            }
+            else {
+                showMessage(4, "用户关闭自动连接");
+            }
         }
         private void link_equipment() {
             progressBar_设置_连接等待.BeginInvoke(new 无参(() =>
             {
-                //progressBar_设置_连接等待.mar
-                progressBar_设置_连接等待.Visible = true;
+               progressBar_设置_连接等待.Visible = true;
                 button_设置_手动连接.Enabled = false;
             }));
             Thread temp_thread = new Thread(() =>{
-                if (MineSM200B.方法_状态操作_连接设备(Isx64,ref Equipment_Num)) {
-
-                }               
+                if (MineSM200B.方法_状态操作_连接设备(Isx64, ref Equipment_Num))
+                {showMessage(3, "设备连接成功");
+                }else { showMessage(3, "设备连接失败"); }
             }){ IsBackground = true };temp_thread.Start();
             temp_thread.Join();
             new Thread(() =>
@@ -697,7 +786,7 @@ namespace SM200Bx64
                             ForAutoLink.IsBackground = true;
                             ForAutoLink.Start();
                         }
-                    } catch { }
+                    } catch { showMessage(5, "(0x05)自动连接过程失败"); }
                 }
             }
             if (界面显示_连接状态 != 连接状态)
@@ -873,7 +962,7 @@ namespace SM200Bx64
                         break;
                 }
                 扫频_Y轴标数值还原();
-            } catch { }
+            } catch { showMessage(5, "(0x07)扫频衰减值错误"); }
         }
         private void numericUpDown_设置_参考电平_ValueChanged(object sender, EventArgs e)
         {
@@ -1370,7 +1459,7 @@ namespace SM200Bx64
             try
             {
                 设置并查询();
-            } catch { }
+            } catch { showMessage(5, "(0x09)扫频获取失败"); }
         }
         private void button_扫频自动_Click(object sender, EventArgs e)
         {
@@ -1401,6 +1490,7 @@ namespace SM200Bx64
             }
             else {
                 //提示:参数错误
+                showMessage(2, "设备可能未连接");
             }
         }
         private async Task 扫频_获取结果() {
@@ -1449,7 +1539,9 @@ namespace SM200Bx64
                     sw.Stop();
                 }
             }
-            catch {//提示:获取结果错误
+            catch
+            {
+                showMessage(5, "(0x15)设备扫频获取结果错误");
             }
             await Task.Run(new Action(() => {
                 if (label_显示区_扫描间隔.IsHandleCreated) {
@@ -1533,7 +1625,7 @@ namespace SM200Bx64
         double IQ_Y轴最小 = double.NaN, IQ_Y轴最大 = double.NaN;
         //记录======
         string IQ_保存路径 = "",IQ_文件前缀 = "IQD";
-        double IQ_记录时长_s = 1e-3;
+        double IQ_记录时长_s = 1;
         bool IQ_正在记录 = false;
         //==========
 
@@ -1577,7 +1669,7 @@ namespace SM200Bx64
                 }
                 IQ_Y轴标数值还原();
             }
-            catch { }
+            catch { showMessage(5, "(0x16)设备IQ衰减配置错误"); }
         }
         private void numericUpDown_IQ_参考电平_ValueChanged(object sender, EventArgs e)
         {
@@ -1694,33 +1786,43 @@ namespace SM200Bx64
         //=================================记录==============================
         private  void button_iq记录_路径选择_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            if (fbd.ShowDialog() == DialogResult.OK)
+            FolderSelectDialog fbd = new FolderSelectDialog();
+            if (fbd.ShowDialog(this.Handle))
             {
                 textBox_iq记录_保存路径.Invoke(new 无参(() =>
                 {
-                    IQ_保存路径 =  textBox_iq记录_保存路径.Text = fbd.SelectedPath;
+                    IQ_保存路径 =  textBox_iq记录_保存路径.Text = fbd.FileName;
                 }));
             }
 
         }
         private void textBox_iq记录_文件名_TextChanged(object sender, EventArgs e)
         {
-            IQ_文件前缀 = textBox_iq记录_文件名.Text;
+            System.Text.RegularExpressions.Regex reg = new System.Text.RegularExpressions.Regex(@"^[A-Za-z0-9]+$");
+            if (reg.IsMatch(textBox_iq记录_文件名.Text))
+            {
+                IQ_文件前缀 = textBox_iq记录_文件名.Text;
+            }
+            else {
+                MessageBox.Show("目前只支持英文字母与数字");
+                IQ_文件前缀 = textBox_iq记录_文件名.Text= "IQD";
+            }
+
         }
 
         private void numericUpDown_iq记录_ValueChanged(object sender, EventArgs e)
         {
-            IQ_记录时长_s = (double)numericUpDown_iq记录.Value;
+            IQ_记录时长_s = (double)numericUpDown_iq记录.Value/1000;
         }
         private void button_iq记录_Click(object sender, EventArgs e)
         {
             停止任何活动();
             清空chart();
             if (IQ_正在记录) {
+                
                 IQ_取消记录();
             }
-            else { IQ_记录文件(); }
+            else { 停止任何活动(); IQ_记录文件(); }
         }
         #endregion
 
@@ -1729,9 +1831,9 @@ namespace SM200Bx64
             MineSM200B.方法_配置设备_衰减与参考电平(Isx64,Equipment_Num, IQ_衰减, IQ_参考电平);
             return MineSM200B.方法_配置设备_IQ_建议配置(Isx64,Equipment_Num,IQ_中心频率,IQ_采样率,IQ_带宽,IQ_触发沿);
         }
-        private SmStatus 分段IQ_加载参数()
+        private SmStatus 分段IQ_加载参数(double 采集时间_s)
         {
-            CAPTURE_LEN = (int)(250e6 * IQ_自动采集时长_s);
+            CAPTURE_LEN = (int)(250e6 * 采集时间_s);
             return MineSM200B.方法_配置设备_IQ分段_建议配置(Isx64,Equipment_Num,IQ_衰减,IQ_参考电平 ,SmDataType.smDataType32fc,IQ_中心频率
                 ,SmTriggerType.smTriggerTypeImmediate,0
                 , CAPTURE_LEN, 0.0);
@@ -1747,7 +1849,7 @@ namespace SM200Bx64
             {
                 IQ_设置并查询();
             }
-            catch { }
+            catch { showMessage(5, "(0x19)IQ配置查询发生错误"); }
         }
         private void button_IQ自动_Click(object sender, EventArgs e)
         {
@@ -1783,12 +1885,13 @@ namespace SM200Bx64
         {
             if (IQ_采样率 == 250e6)
             {
-                if (分段IQ_加载参数() >= 0)
+                if (分段IQ_加载参数(IQ_自动采集时长_s) >= 0)
                 {
                     await 分段IQ_获取结果();
                 }
                 else {
                     //提示:参数错误}
+                    showMessage(2, "设备可能未连接");
                 }
             }
             else
@@ -1800,6 +1903,7 @@ namespace SM200Bx64
                 else
                 {
                     //提示:参数错误}
+                    showMessage(2, "设备可能未连接");
                 }
             }
 
@@ -1896,7 +2000,7 @@ namespace SM200Bx64
                 catch
                 {
                     IQ_TimerAutoGet = false;
-                    //提示:获取错误
+                    showMessage(5, "(0x0A)IQ获取结果错误");
                 }
                 #endregion
             }
@@ -2004,7 +2108,7 @@ namespace SM200Bx64
                 #endregion
             }
             catch { IQ_TimerAutoGet = false;
-                //提示:获取错误
+                showMessage(5, "(0x0B)IQ分段获取结果错误");
             }
 
         }
@@ -2067,46 +2171,150 @@ namespace SM200Bx64
         }
 
         //======================================IQ记录文件==================
-
-        private void IQ_记录文件()
+        private void 记录时控件取消使用(bool v) {
+            label_主界面按钮.Enabled=label_扫频按钮.Enabled=label_其他相关按钮.Enabled=label_临时数据按钮.Enabled=numericUpDown_iq记录.Enabled=textBox_iq记录_文件名.Enabled= button_iq记录_路径选择.Enabled=button_IQ停止.Enabled=button_IQ自动.Enabled=button_IQ单次.Enabled = !v;
+        }
+        private async void IQ_记录文件()
         {
-            progressBar_iq记录.Visible = true;
+            记录时控件取消使用(true);
+            CancellationTokenSource tokenSource = new CancellationTokenSource();
+            ManualResetEvent resetEvent = new ManualResetEvent(true);
+            String 路径 = IQ_保存路径 + "//" + IQ_文件前缀 + DateTime.Now.ToString("_yyyyMMddHHmmss") + ".SMD";
+            IQ_记录显示(true);
             if (IQ_采样率 == 250e6) {
+                CancellationToken token_transcribe = tokenSource.Token;
+                await Task.Run(() => {
+                    if (分段IQ_加载参数(IQ_记录时长_s) < 0)
+                    {
+                        //警告：设备未连接
+                        showMessage(4, "设备可能未连接");
+                        tokenSource.Cancel();
+                        return;
+                    }
+                    int iqRLen = 0;
+                    ArrayList temp_segIQResult = MineSM200B.方法_获取结果_IQ分段(Isx64, Equipment_Num,CAPTURE_LEN);
+                    for (int i = 0; i < temp_segIQResult.Count; i++)
+                    {
+                        iqRLen += ((float[])temp_segIQResult[i]).Length;
+                    }
+                    float[] iqR = new float[iqRLen];
+                    int j = 0, k = 0;
+                    for (int i = 0; i < iqRLen; i++)
+                    {
+                        if (j < ((float[])temp_segIQResult[k]).Length)
+                        {
+                            iqR[i] = ((float[])temp_segIQResult[k])[j];
+                            j++;
+                        }
+                        else
+                        {
+                            k++;
+                            j = 0;
+                        }
 
+                    }
+                    //250MSa/s缺少部分信息
+                    float[] temp_iqR = iqR; iqRLen = temp_iqR.Length / 2; GetIQLen = iqRLen;
+                    IQData iqd = new IQData(); 
+                    iqd.Attenuator = IQ_衰减; 
+                    iqd.BandWidth = (int)160e6; iqd.CaptureSize = IQ_记录时长_s; iqd.CenterF = IQ_中心频率; 
+                    iqd.IQResult_32f = temp_iqR;
+                     iqd.RefLevel = IQ_参考电平; 
+                    iqd.SampleRate = 250e6;
+
+                    try
+                    {
+
+                        using (FileStream fs = new FileStream(路径, FileMode.Create))
+                        {
+                            BinaryFormatter bf = new BinaryFormatter(); bf.Serialize(fs, iqd);
+
+                        }
+
+                    }
+                    catch (Exception Err)
+                    {
+                        showMessage(5, "(0x20)IQ流记录文件过程发生错误,可能需要管理员权限。" + Err.Message);
+                    }
+                    try
+                    {
+                        if (label_iq记录_文本_文件大小.IsHandleCreated)
+                        {
+                            label_iq记录_文本_文件大小.Invoke(new 无参(() =>
+                            {
+                                label_iq记录_文本_文件大小.Text = "文件大小:" + (((double)FileSize(路径)) / 1000 / 1000) + "MB"; ;
+                            }));
+                        }
+                    }
+                    catch { }
+                }).ContinueWith(t => {
+                    IQ_记录显示(false);
+                    showMessage(2, "记录完成");
+                });
             }
             else {
-                IQ_加载参数();
-                int iqRLen = 0;
-                int temp_i = 0;
-                float avg_P = 0;
-                temp_IQResult = MineSM200B.方法_获取结果_IQ_默认数据(Isx64, Equipment_Num, IQ_记录时长_s, ref iqSampleRate, ref iqBandwidth
-                    , ref iqTimeStamp, ref sampleLoss, ref samplesRemaining);
-                float[] temp_iqR = (float[])(temp_IQResult[0]);
-                iqRLen = temp_iqR.Length / 2;
-                GetIQLen = iqRLen;
-                IQData iqd = new IQData(); iqd.Attenuator = IQ_衰减; iqd.BandWidth = (int)iqBandwidth;
-                iqd.CaptureSize = IQ_记录时长_s; iqd.CenterF = IQ_中心频率; iqd.IQResult_32f = temp_iqR;
-                iqd.IQTime = iqTimeStamp; iqd.RefLevel = IQ_参考电平; iqd.SampleLoss = sampleLoss; iqd.SampleRate = iqSampleRate;
-                iqd.SampleRemaining = samplesRemaining;
-                using (FileStream fs = new FileStream(IQ_保存路径 + "//" + IQ_文件前缀 + DateTime.Now.ToString("_YYYYMMddHHmmss") + ".SMD", FileMode.Create))
-                {
-                    BinaryFormatter bf = new BinaryFormatter();
-                    bf.Serialize(fs, iqd);
-                }
+                CancellationToken token_transcribe = tokenSource.Token;
+                await Task.Run(()=> {
+                    if (IQ_加载参数()<0) {
+                        //警告：设备未连接
+                        showMessage(4, "设备可能未连接");
+                        tokenSource.Cancel();
+                        return;
+                    }
+                    int iqRLen = 0;
+                    temp_IQResult = MineSM200B.方法_获取结果_IQ_默认数据(Isx64, Equipment_Num, IQ_记录时长_s, ref iqSampleRate, ref iqBandwidth
+                        , ref iqTimeStamp, ref sampleLoss, ref samplesRemaining);
+                    float[] temp_iqR = (float[])(temp_IQResult[0]); iqRLen = temp_iqR.Length / 2; GetIQLen = iqRLen;
+                    IQData iqd = new IQData(); iqd.Attenuator = IQ_衰减; iqd.BandWidth = (int)iqBandwidth; iqd.CaptureSize = IQ_记录时长_s; iqd.CenterF = IQ_中心频率; iqd.IQResult_32f = temp_iqR;
+                    iqd.IQTime = iqTimeStamp; iqd.RefLevel = IQ_参考电平; iqd.SampleLoss = sampleLoss; iqd.SampleRate = iqSampleRate; iqd.SampleRemaining = samplesRemaining;
+                    
+                    try {
+                        
+                        using (FileStream fs = new FileStream(路径, FileMode.Create))
+                        {
+                            BinaryFormatter bf = new BinaryFormatter(); bf.Serialize(fs, iqd);
+
+                        }
+
+                    } catch(Exception Err)
+                    {
+                        showMessage(5, "(0x20)IQ流记录文件过程发生错误,可能需要管理员权限。"+ Err.Message);
+                    }
+                    try {
+                        if (label_iq记录_文本_文件大小.IsHandleCreated)
+                        {
+                            label_iq记录_文本_文件大小.Invoke(new 无参(() =>
+                            {
+                                label_iq记录_文本_文件大小.Text = "文件大小:" + (((double)FileSize(路径)) / 1000 / 1000) + "MB"; ;
+                            }));
+                        }
+                    } catch { }
+                }).ContinueWith(t=> {
+                    IQ_记录显示(false);
+                    showMessage(2, "记录完成");
+                });
+                
             }
         }
-
-        private void IQ_取消记录() { 
-        
+        private void IQ_记录显示(bool v) {
+            IQ_正在记录 = v;
+            if (button_iq记录.IsHandleCreated)
+            {
+                progressBar_iq记录.Invoke(new 无参(() => {
+                    progressBar_iq记录.Visible = v; if (v) { button_iq记录.Text = "取消记录";
+                    } else { button_iq记录.Text = "开始记录"; }
+                }));
+            }
+            记录时控件取消使用(false);
+        }
+        private void IQ_取消记录() {
+            IQ_记录显示(false);
         }
 
         #endregion
 
         #region 回放
-        private void button_IQ采集_记录界面按钮_Click_1(object sender, EventArgs e)
-        {
 
-        }
         bool 当前界面 = false;
         /// <summary>
         /// true为记录界面，false为回放界面
@@ -2147,8 +2355,6 @@ namespace SM200Bx64
             音频_低通 = 3000, 音频_高通 = 20, 音频_去加重 = 75, 音频_Y轴最大 = double.NaN,音频_Y轴最小 = double.NaN;
         SmAudioType 音频_类型 = SmAudioType.smAudioTypeFM;
         bool 音频_播放 = false, 音频_参数变化 = false;
-
-
         private void 音频_Y轴标数值还原()
         {
             音频_Y轴最大 = double.NaN;
@@ -2225,10 +2431,6 @@ namespace SM200Bx64
 
         #endregion
 
-
-
-
-
         private void comboBox_音频处理_音频类型_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (comboBox_音频处理_音频类型.SelectedIndex) {
@@ -2257,24 +2459,18 @@ namespace SM200Bx64
         private void numericUpDown_音频处理_带宽_ValueChanged(object sender, EventArgs e)
         {
             音频_带宽 = (double)numericUpDown_音频处理_带宽.Value * 1e3; 音频_参数变化 = true;
-        }
-
- 
+        } 
 
         private void numericUpDown_音频处理_高通_ValueChanged(object sender, EventArgs e)
         {
             音频_高通 = (double)numericUpDown_音频处理_高通.Value; 音频_参数变化 = true;
         }
 
-
-
         private void numericUpDown_音频处理_低通_ValueChanged(object sender, EventArgs e)
         {
             音频_低通 = (double)numericUpDown_音频处理_低通.Value * 1e3; 音频_参数变化 = true;
 
         }
-
-
 
         private void numericUpDown_音频处理_去加重_ValueChanged(object sender, EventArgs e)
         {
@@ -2287,6 +2483,11 @@ namespace SM200Bx64
 
 
 
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void button_音频处理_停止_Click(object sender, EventArgs e)
         {
@@ -2346,8 +2547,7 @@ namespace SM200Bx64
             }
             catch (Exception ex)
             {
-
-                //  throw;
+                showMessage(5, "(0x21)"+ex.Message);
             }
         }
 
@@ -2379,8 +2579,10 @@ namespace SM200Bx64
                 else {
                     音频_播放 = false; 停止任何活动();
                     //提示：未连接
+                    showMessage(3, "连接或许发生了异常"); 
+
                 }
-            } catch { throw new Exception("播放错误"); }
+            } catch { showMessage(5, "(0x22)播放过程错误"); }
         }
         private SmStatus 音频_加载参数()
         {
@@ -2390,6 +2592,27 @@ namespace SM200Bx64
         #endregion
 
         #region 其他方法
+        public static long FileSize(string filePath)
+        {
+            long temp = 0;
+            try
+            {
+                if (File.Exists(filePath) == false)
+                {
+                    string[] str1 = Directory.GetFileSystemEntries(filePath);
+                    foreach (string s1 in str1)
+                    {
+                        temp += FileSize(s1);
+                    }
+                }
+                else
+                {
+                    FileInfo fileInfo = new FileInfo(filePath);
+                    return fileInfo.Length;
+                }
+            } catch { return 0; }
+            return temp;
+        }
         protected new bool DesignMode
         {
             get
@@ -2525,6 +2748,8 @@ namespace SM200Bx64
         }
         #endregion
 
+
+
         #region 临时测试
 
         private void button_IQ采集_生成文件_Click(object sender, EventArgs e)
@@ -2536,6 +2761,29 @@ namespace SM200Bx64
             test2();
         }
 
+        private void button_IQ采集_回放文件选择_Click(object sender, EventArgs e)
+        {
+            test2();
+        }
+        private void button_IQ采集_记录界面按钮_Click_1(object sender, EventArgs e)
+        {
+            float[] temp_f = iqdd.IQResult_32f;
+            if (temp_f.Length > 4000)
+            {
+                int ti = temp_f.Length;
+                ti = ti / 4000;
+
+                float[] temppf = new float[4000];
+
+                for(int i= 0;i<4000 ;i++){
+                    temppf[i] = temp_f[ti * i];
+                }
+                chart1.Series[0].Points.DataBindY(temppf);
+            }
+            else {
+                chart1.Series[0].Points.DataBindY(iqdd.IQResult_32f);
+            }
+        }
         private void test()
         {
             Class.IQData iqd = new Class.IQData();
@@ -2558,20 +2806,23 @@ namespace SM200Bx64
             //timer_chart控件使用.
         }
 
-
+        IQData iqdd;
         private void test2()
         {
-            using (FileStream fs = new FileStream("1.txt", FileMode.Open)) {
+            //IQD_20200414140804.SMD
+            //IQD_20200414141101.SMD
+            using (FileStream fs = new FileStream("C:/Users/Linda/Desktop/IQD_20200414140804.SMD", FileMode.Open)) {
                 BinaryFormatter bf = new BinaryFormatter();
                 Class.IQData iqd = bf.Deserialize(fs) as Class.IQData;
-                if (iqd != null) {
-                    MessageBox.Show(iqd.IQResult_32f.Length.ToString());
+                iqdd = iqd;
+                //if (iqd != null) {
+                //    MessageBox.Show(iqd.IQResult_32f.Length.ToString());
 
-                    if (iqd.IQResult_16s == null)
-                    {
-                        MessageBox.Show("暂无16型");
-                    }
-                }
+                //    if (iqd.IQResult_16s == null)
+                //    {
+                //        MessageBox.Show("暂无16型");
+                //    }
+                //}
 
 
             }
