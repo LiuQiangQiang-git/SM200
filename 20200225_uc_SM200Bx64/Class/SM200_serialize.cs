@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,8 @@ namespace SM200Bx64.Class
     {
         public IQData() { }
         public IQData(int attenuator, double refLevel, double centerF, int sampleRate, long bandwidth
-            , double captureSize, float[] IQR_32, short[] IQR_16, long IQT, int sampleLoss, int sampleRemaining)
+            , double captureSize, float[] IQR_32, short[] IQR_16, long IQT, int sampleLoss, int sampleRemaining
+            ,bool is250,ArrayList segIQR_32,ArrayList segIQR_16)
         {
             Attenuator = attenuator;
             RefLevel = refLevel;
@@ -25,6 +27,11 @@ namespace SM200Bx64.Class
             IQTime = IQT;
             SampleLoss = sampleLoss;
             SampleRemaining = sampleRemaining;
+            Is250 = is250;
+            segIQResult_32f = segIQR_32;
+            segIQResult_16s = segIQR_16;
+            
+
         }
         [NonSerialized]
         /// <summary>
@@ -75,6 +82,12 @@ namespace SM200Bx64.Class
         public int SampleLoss;
 
         public int SampleRemaining;
+
+        public bool Is250;
+
+        public ArrayList segIQResult_32f;
+
+        public ArrayList segIQResult_16s;
     }
 
     [Serializable]

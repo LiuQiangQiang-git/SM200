@@ -125,6 +125,7 @@
     <None Include="Resources\down_arrow_24px_1205404_easyicon.net.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\pause_14.08px_1189656_easyicon.net.png" />
     <None Include="Resources\Free-Converter.com-play_24px_1172668_easyicon.net-68621900.png" />
     <None Include="Resources\Free-Converter.com-stop_24px_1172803_easyicon.net-62761900.png" />
     <Content Include="Resources\Home_Server_48px_554956_easyicon.net.ico" />

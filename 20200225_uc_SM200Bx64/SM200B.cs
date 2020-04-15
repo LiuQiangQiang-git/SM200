@@ -2172,11 +2172,15 @@ namespace SM200Bx64
 
         //======================================IQ记录文件==================
         private void 记录时控件取消使用(bool v) {
-            label_主界面按钮.Enabled=label_扫频按钮.Enabled=label_其他相关按钮.Enabled=label_临时数据按钮.Enabled=numericUpDown_iq记录.Enabled=textBox_iq记录_文件名.Enabled= button_iq记录_路径选择.Enabled=button_IQ停止.Enabled=button_IQ自动.Enabled=button_IQ单次.Enabled = !v;
+            if (button_iq记录.IsHandleCreated) {
+                button_iq记录.Invoke(new 无参(() =>
+                {
+                    label_主界面按钮.Enabled = label_扫频按钮.Enabled = label_其他相关按钮.Enabled = label_临时数据按钮.Enabled = numericUpDown_iq记录.Enabled = textBox_iq记录_文件名.Enabled = button_iq记录_路径选择.Enabled = button_IQ停止.Enabled = button_IQ自动.Enabled = button_IQ单次.Enabled = !v;
+                }));
+            }   
         }
         private async void IQ_记录文件()
         {
-            记录时控件取消使用(true);
             CancellationTokenSource tokenSource = new CancellationTokenSource();
             ManualResetEvent resetEvent = new ManualResetEvent(true);
             String 路径 = IQ_保存路径 + "//" + IQ_文件前缀 + DateTime.Now.ToString("_yyyyMMddHHmmss") + ".SMD";
@@ -2193,35 +2197,63 @@ namespace SM200Bx64
                     }
                     int iqRLen = 0;
                     ArrayList temp_segIQResult = MineSM200B.方法_获取结果_IQ分段(Isx64, Equipment_Num,CAPTURE_LEN);
-                    for (int i = 0; i < temp_segIQResult.Count; i++)
-                    {
-                        iqRLen += ((float[])temp_segIQResult[i]).Length;
-                    }
-                    float[] iqR = new float[iqRLen];
-                    int j = 0, k = 0;
-                    for (int i = 0; i < iqRLen; i++)
-                    {
-                        if (j < ((float[])temp_segIQResult[k]).Length)
-                        {
-                            iqR[i] = ((float[])temp_segIQResult[k])[j];
-                            j++;
-                        }
-                        else
-                        {
-                            k++;
-                            j = 0;
-                        }
-
-                    }
                     //250MSa/s缺少部分信息
-                    float[] temp_iqR = iqR; iqRLen = temp_iqR.Length / 2; GetIQLen = iqRLen;
                     IQData iqd = new IQData(); 
                     iqd.Attenuator = IQ_衰减; 
                     iqd.BandWidth = (int)160e6; iqd.CaptureSize = IQ_记录时长_s; iqd.CenterF = IQ_中心频率; 
-                    iqd.IQResult_32f = temp_iqR;
                      iqd.RefLevel = IQ_参考电平; 
                     iqd.SampleRate = 250e6;
+                    iqd.Is250 = true;iqd.segIQResult_32f = temp_segIQResult;
 
+                    try
+                    {
+
+                        using (FileStream fs = new FileStream(路径, FileMode.Create))
+                        {
+                            BinaryFormatter bf = new BinaryFormatter(); bf.Serialize(fs, iqd);
+                        }
+
+                    }
+                    catch (Exception Err)
+                    {
+                        showMessage(5, "(0x20)IQ流记录文件过程发生错误,可能需要管理员权限。" + Err.Message);
+                    }
+                    try
+                    {
+                        if (label_iq记录_文本_文件大小.IsHandleCreated)
+                        {
+                            label_iq记录_文本_文件大小.Invoke(new 无参(() =>
+                            {
+                                label_iq记录_文本_文件大小.Text = "文件大小:" + (((double)FileSize(路径)) / 1000 / 1000) + "MB"; ;
+                            }));
+                        }
+                    }
+                    catch { }
+                });
+                await Task.Run(() =>
+                {
+                    IQ_记录显示(false);
+                    showMessage(2, "记录完成");
+                });
+            }
+            else {
+                CancellationToken token_transcribe = tokenSource.Token;
+                await Task.Run(() =>
+                {
+                    if (IQ_加载参数() < 0)
+                    {
+                        //警告：设备未连接
+                        showMessage(4, "设备可能未连接");
+                        tokenSource.Cancel();
+                        return;
+                    }
+                    int iqRLen = 0;
+                    temp_IQResult = MineSM200B.方法_获取结果_IQ_默认数据(Isx64, Equipment_Num, IQ_记录时长_s, ref iqSampleRate, ref iqBandwidth
+                        , ref iqTimeStamp, ref sampleLoss, ref samplesRemaining);
+                    float[] temp_iqR = (float[])(temp_IQResult[0]); iqRLen = temp_iqR.Length / 2; GetIQLen = iqRLen;
+                    IQData iqd = new IQData(); iqd.Attenuator = IQ_衰减; iqd.BandWidth = (int)iqBandwidth; iqd.CaptureSize = IQ_记录时长_s; iqd.CenterF = IQ_中心频率; iqd.IQResult_32f = temp_iqR;
+                    iqd.IQTime = iqTimeStamp; iqd.RefLevel = IQ_参考电平; iqd.SampleLoss = sampleLoss; iqd.SampleRate = iqSampleRate; iqd.SampleRemaining = samplesRemaining;
+                    iqd.Is250 = false;
                     try
                     {
 
@@ -2247,53 +2279,12 @@ namespace SM200Bx64
                         }
                     }
                     catch { }
-                }).ContinueWith(t => {
+                });
+                await Task.Run(() =>
+                {
                     IQ_记录显示(false);
                     showMessage(2, "记录完成");
                 });
-            }
-            else {
-                CancellationToken token_transcribe = tokenSource.Token;
-                await Task.Run(()=> {
-                    if (IQ_加载参数()<0) {
-                        //警告：设备未连接
-                        showMessage(4, "设备可能未连接");
-                        tokenSource.Cancel();
-                        return;
-                    }
-                    int iqRLen = 0;
-                    temp_IQResult = MineSM200B.方法_获取结果_IQ_默认数据(Isx64, Equipment_Num, IQ_记录时长_s, ref iqSampleRate, ref iqBandwidth
-                        , ref iqTimeStamp, ref sampleLoss, ref samplesRemaining);
-                    float[] temp_iqR = (float[])(temp_IQResult[0]); iqRLen = temp_iqR.Length / 2; GetIQLen = iqRLen;
-                    IQData iqd = new IQData(); iqd.Attenuator = IQ_衰减; iqd.BandWidth = (int)iqBandwidth; iqd.CaptureSize = IQ_记录时长_s; iqd.CenterF = IQ_中心频率; iqd.IQResult_32f = temp_iqR;
-                    iqd.IQTime = iqTimeStamp; iqd.RefLevel = IQ_参考电平; iqd.SampleLoss = sampleLoss; iqd.SampleRate = iqSampleRate; iqd.SampleRemaining = samplesRemaining;
-                    
-                    try {
-                        
-                        using (FileStream fs = new FileStream(路径, FileMode.Create))
-                        {
-                            BinaryFormatter bf = new BinaryFormatter(); bf.Serialize(fs, iqd);
-
-                        }
-
-                    } catch(Exception Err)
-                    {
-                        showMessage(5, "(0x20)IQ流记录文件过程发生错误,可能需要管理员权限。"+ Err.Message);
-                    }
-                    try {
-                        if (label_iq记录_文本_文件大小.IsHandleCreated)
-                        {
-                            label_iq记录_文本_文件大小.Invoke(new 无参(() =>
-                            {
-                                label_iq记录_文本_文件大小.Text = "文件大小:" + (((double)FileSize(路径)) / 1000 / 1000) + "MB"; ;
-                            }));
-                        }
-                    } catch { }
-                }).ContinueWith(t=> {
-                    IQ_记录显示(false);
-                    showMessage(2, "记录完成");
-                });
-                
             }
         }
         private void IQ_记录显示(bool v) {
@@ -2305,7 +2296,7 @@ namespace SM200Bx64
                     } else { button_iq记录.Text = "开始记录"; }
                 }));
             }
-            记录时控件取消使用(false);
+            记录时控件取消使用(v);
         }
         private void IQ_取消记录() {
             IQ_记录显示(false);
@@ -2314,8 +2305,9 @@ namespace SM200Bx64
         #endregion
 
         #region 回放
-
+        IQData temp_iqd;
         bool 当前界面 = false;
+        string 回放_IQ文件信息 = null, 回放_扫频文件信息 = null;
         /// <summary>
         /// true为记录界面，false为回放界面
         /// </summary>
@@ -2325,20 +2317,123 @@ namespace SM200Bx64
             if (当前界面 != v)
             {
                 当前界面 = v;
-                panel_IQ记录界面.Visible = v;
+                panel_扫频回放界面.Visible = v;
                 panel_IQ回放界面.Visible = !v;
+                if (!当前界面)
+                {
+                    label_回放_文件信息.Text = 回放_IQ文件信息;
+                }
+                else
+                {
+                    label_回放_文件信息.Text = 回放_扫频文件信息;
+                }
             }
         }
-        private void button_IQ采集_记录界面按钮_Click(object sender, EventArgs e)
+        private void 回放_界面设置_读取(bool v) {
+            if(groupBox_实时扫频.IsHandleCreated)
+            {
+                groupBox_实时扫频.Invoke(new 无参(()=> {
+                    groupBox_实时扫频.Enabled = !v;
+                    progressBar_回放.Visible = v;
+                }));
+            }
+        }
+        private void button_IQ采集_记录界面按钮_Click_1(object sender, EventArgs e)
         {
             IQ_记录回放界面(true);
         }
-
         private void button_IQ采集_回放界面按钮_Click(object sender, EventArgs e)
         {
             IQ_记录回放界面(false);
         }
+        private async void button_IQ采集_回放文件选择_Click(object sender, EventArgs e)
+        {
+            回放_界面设置_读取(true);
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    await Task.Run(() =>
+                    {
+                        string s = ofd.FileName;
+                        using (FileStream fs = new FileStream(s, FileMode.Open))
+                        {
+                            BinaryFormatter bf = new BinaryFormatter();
+                            try
+                            {
+                                Class.IQData iqd = bf.Deserialize(fs) as Class.IQData;
+                                temp_iqd = iqd;
+                            }
+                            catch { showMessage(5, "无法正常解析文件"); 回放_界面设置_读取(false); return; }
+                            showMessage(2, "正在读取文件");
+                            if (label_回放_文件信息.IsHandleCreated)
+                            {
+                                label_回放_文件信息.Invoke(new 无参(() =>
+                                {
+                                    textBox_回放_IQ路径.Text = s;
+                                    回放_IQ文件信息 = label_回放_文件信息.Text = "衰减:" + temp_iqd.Attenuator
+                                        + "\n采样率:" + (temp_iqd.SampleRate) / 1e6 + "MS/s";
+                                }));
+                            }
+                        }
+                    });
+                    回放_界面设置_读取(false);
+                }
+                catch { showMessage(5, "无法正常解析文件"); 回放_界面设置_读取(false); }
+            }
+            else { 回放_界面设置_读取(false); }
+        }
 
+        int NFFT = 2048;
+        private void IQ播放() {
+            if (temp_iqd != null)
+            {
+                if (!temp_iqd.Is250) {
+                    Complex[] c = new Complex[temp_iqd.IQResult_32f.Length / 2];
+                    for (int i = 0; i < NFFT; i++)
+                    {
+                        c[i] = new Complex();
+                        c[i].Real = temp_iqd.IQResult_32f[2*i];
+                        c[i].Imaginary = temp_iqd.IQResult_32f[2 * i+1];
+                    }
+                    FFT t = new FFT();
+                    Complex[] ttt =  t.DFT(c, NFFT);
+                    double[] fi = new double[NFFT];
+                    double sweep_interval = temp_iqd.BandWidth / NFFT;
+                    double[] x = new double[NFFT];
+                    for (int i = 0;i< NFFT; i++) {
+                    fi[i] = 10 * Math.Log10(ttt[i].Real * ttt[i].Real+ ttt[i].Imaginary * ttt[i].Imaginary);
+                        x[i] = temp_iqd.CenterF - temp_iqd.BandWidth / 2 + i * sweep_interval;
+                    }
+                    double tempd = 0;
+                    for (int i = 0;i<NFFT/4;i++) {
+                        tempd = fi[i];
+                        fi[i] = fi[NFFT/2-i];
+                        fi[NFFT / 2-i] = tempd;
+                    }
+                    for (int i = 0; i < NFFT / 4-1; i++)
+                    {
+                        tempd = fi[NFFT/2+i+1];
+                        fi[NFFT / 2 + i+1] = fi[NFFT - i-1];
+                        fi[NFFT - i-1] = tempd;
+                    }
+
+                    chart1.Series[0].Points.DataBindXY(x,fi);
+
+                }
+            
+            }
+            else {
+                showMessage(4,"未检测到文件");
+            }
+        
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            IQ播放();
+        }
 
         #endregion
 
@@ -2496,6 +2591,8 @@ namespace SM200Bx64
             清空chart();
         }
 
+ 
+
         private void button_音频处理_自动_Click(object sender, EventArgs e)
         {
             if (扫频_TimerAutoGetSweep || IQ_TimerAutoGet)
@@ -2551,6 +2648,7 @@ namespace SM200Bx64
             }
         }
 
+   
         private void 停止音频播放()
         {
             音频_播放 = false;
@@ -2587,6 +2685,13 @@ namespace SM200Bx64
         private SmStatus 音频_加载参数()
         {
            return MineSM200B.方法_配置设备_音频_统一配置(Isx64,Equipment_Num,音频_中心频率,音频_类型,音频_带宽, 音频_低通, 音频_高通, 音频_去加重);
+        }
+
+        private void datatoFFT(float[] af) {
+            if (af.Length<1024) { 
+            
+            }
+
         }
 
         #endregion
@@ -2761,29 +2866,8 @@ namespace SM200Bx64
             test2();
         }
 
-        private void button_IQ采集_回放文件选择_Click(object sender, EventArgs e)
-        {
-            test2();
-        }
-        private void button_IQ采集_记录界面按钮_Click_1(object sender, EventArgs e)
-        {
-            float[] temp_f = iqdd.IQResult_32f;
-            if (temp_f.Length > 4000)
-            {
-                int ti = temp_f.Length;
-                ti = ti / 4000;
-
-                float[] temppf = new float[4000];
-
-                for(int i= 0;i<4000 ;i++){
-                    temppf[i] = temp_f[ti * i];
-                }
-                chart1.Series[0].Points.DataBindY(temppf);
-            }
-            else {
-                chart1.Series[0].Points.DataBindY(iqdd.IQResult_32f);
-            }
-        }
+    
+    
         private void test()
         {
             Class.IQData iqd = new Class.IQData();
@@ -2806,7 +2890,7 @@ namespace SM200Bx64
             //timer_chart控件使用.
         }
 
-        IQData iqdd;
+    
         private void test2()
         {
             //IQD_20200414140804.SMD
@@ -2814,7 +2898,7 @@ namespace SM200Bx64
             using (FileStream fs = new FileStream("C:/Users/Linda/Desktop/IQD_20200414140804.SMD", FileMode.Open)) {
                 BinaryFormatter bf = new BinaryFormatter();
                 Class.IQData iqd = bf.Deserialize(fs) as Class.IQData;
-                iqdd = iqd;
+                temp_iqd = iqd;
                 //if (iqd != null) {
                 //    MessageBox.Show(iqd.IQResult_32f.Length.ToString());
 
@@ -2825,6 +2909,27 @@ namespace SM200Bx64
                 //}
 
 
+            }
+        }
+
+        public void test3() {
+            float[] temp_f = temp_iqd.IQResult_32f;
+            if (temp_f.Length > 4000)
+            {
+                int ti = temp_f.Length;
+                ti = ti / 4000;
+
+                float[] temppf = new float[4000];
+
+                for (int i = 0; i < 4000; i++)
+                {
+                    temppf[i] = temp_f[ti * i];
+                }
+                chart1.Series[0].Points.DataBindY(temppf);
+            }
+            else
+            {
+                chart1.Series[0].Points.DataBindY(temp_iqd.IQResult_32f);
             }
         }
         #endregion

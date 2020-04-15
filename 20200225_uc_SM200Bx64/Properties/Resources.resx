@@ -193,6 +193,9 @@
   <data name="收起_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\收起_01.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="暂停" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pause_14.08px_1189656_easyicon.net.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="终止" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Free-Converter.com-stop_24px_1172803_easyicon.net-62761900.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
